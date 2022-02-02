@@ -8,6 +8,6 @@ console.log(cookies.cookies)
 const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = `
-  <h1>Mini Cookies!</h1>
+  <h1>Mini Cookies! 🍪</h1>
   <p>Initially, this is a <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite starter</a>.</p>
 `
