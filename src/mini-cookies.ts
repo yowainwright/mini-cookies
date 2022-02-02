@@ -13,7 +13,7 @@ export function listCookies(): CookieDictionary {
 		)
 }
 
-export function miniCookie(options: MiniCookiesOptions = {}) {
+export function miniCookies(options: MiniCookiesOptions = {}) {
 	const cookies = listCookies()
 	return {
 		cookies,
