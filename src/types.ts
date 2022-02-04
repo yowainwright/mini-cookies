@@ -1,4 +1,4 @@
-export type MiniCookiesOptions = {
+export type CookiesOptions = {
 	isDebugging?: boolean
 }
 
@@ -6,7 +6,7 @@ export type CookieDictionary = {
 	[key: string]: string
 }
 
-export type CookieOptions = {
+export type CookieAttributes = {
 	days?: number
 	path?: string
 	domain?: string
