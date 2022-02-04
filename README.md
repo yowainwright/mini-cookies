@@ -13,7 +13,7 @@ npm i mini-cookies
 ```typescript
 import { miniCookies } from 'mini-cookies';
 
-const cookie = miniCookies();
+const cookies = miniCookies();
 cookies.set('mini', 'cookies');
 cookies.get('mini'); // 'cookies'
 cookies.remove('mini'); // no cookie 😫
@@ -22,15 +22,28 @@ cookies.remove('mini'); // no cookie 😫
 
 ## API
 
-## `miniCookies({options..})`
+## `miniCookies({options})`
 
-> param: `{options}`, an object of `miniCookies` options.
+**`{options}`** an object argument of **Mini Cookies** options.
 
-### `.set(<key>, <value>), {options...})`
+---
 
-> Set a cookie. params: `<key>`: a string, `<value>`: a string, `[options...]`: an object.
+### `.set(<key>, <value>), {attributes})`
+
+> Set a cookie. params: `<key>`: a string, `<value>`: a string, `{attributes}`: an object of cookie attributes.
 
 ---
 ### `.get(<key>)`
 
-> Attempts to get a cookie. params: `<key>`: a string
+> Gets a cookie by string. params: `<key>`: a string
+
+---
+
+### `.remove(<key>)`
+
+> Removes a cookie by string. params: `<key>`: a string
+
+### Synopsis
+
+That's it! Mini Cookies is built for simplicity.
+It has 0 dependencies and is just a few lines of code.
