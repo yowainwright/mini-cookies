@@ -50,4 +50,4 @@ Removes a cookie by string. params: `<key>`: a string
 ## Synopsis
 
 That's it! Mini Cookies is built for simplicity.
-It has 0 dependencies and is just a few lines of code.
+It has 0 dependencies and is just a few lines of code. 👌
