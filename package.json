@@ -19,6 +19,6 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "jest-environment-node"
+    "testEnvironment": "jsdom"
   }
 }
