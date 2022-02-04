@@ -23,30 +23,45 @@ cookies.remove('mini'); // no cookie 😫
 
 ## API
 
-## `miniCookies({options})`
+### `miniCookies({options})`
 
-> **`{options}`** an object argument of **Mini Cookies** options.
-
----
-
-### `.set(<key>, <value>), {attributes})`
-
-- Set a cookie. params: `<key>`: a string, `<value>`: a string, `{attributes}`: an object of cookie attributes.
-
----
-### `.get(<key>)`
-
-- Gets a cookie by string. params: `<key>`: a string
+**`{options}`** an object argument of **Mini Cookies** options.
 
 ---
 
-### `.remove(<key>)`
+#### `miniCookies({options}).set(<key>, <value>), {attributes})`
 
-- Removes a cookie by string. params: `<key>`: a string
+Set a cookie. 
+
+##### params 
+
+- `<key>`: a string 
+- `<value>`: a string 
+- `{attributes}`: an object of cookie attributes.
+
+---
+
+#### `miniCookies({options}).get(<key>)`
+
+Gets a cookie by string. 
+
+##### param
+
+- `<key>`: a string
+
+---
+
+#### `miniCookies({options}).remove(<key>)`
+
+Removes a cookie by string. 
+
+##### param
+
+- `<key>`: a string
 
 ---
 
 ## Synopsis
 
-That's it! Mini Cookies is built for simplicity.
-It has 0 dependencies and is just a few lines of code.
+That's it! Mini Cookies is built for simplicity.<br/>
+It has 0 dependencies and is just a few lines of code. 👌
