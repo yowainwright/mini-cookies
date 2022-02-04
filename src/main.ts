@@ -3,7 +3,7 @@ import { miniCookies } from './mini-cookies'
 const cookies = miniCookies({ isDebugging: true }).set('foo', 'bar', {
 	days: 1,
 })
-console.log(cookies.cookies)
+console.log(cookies)
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 

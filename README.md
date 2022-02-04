@@ -31,19 +31,19 @@ cookies.remove('mini'); // no cookie 😫
 
 #### `miniCookies({options}).set(<key>, <value>), {attributes})`
 
-Set a cookie. 
+Set a cookie.
 
-##### params 
+##### params
 
-- `<key>`: a string 
-- `<value>`: a string 
+- `<key>`: a string
+- `<value>`: a string
 - `{attributes}`: an object of cookie attributes.
 
 ---
 
 #### `miniCookies({options}).get(<key>)`
 
-Gets a cookie by string. 
+Gets a cookie by string.
 
 ##### param
 
@@ -53,7 +53,7 @@ Gets a cookie by string.
 
 #### `miniCookies({options}).remove(<key>)`
 
-Removes a cookie by string. 
+Removes a cookie by string.
 
 ##### param
 
