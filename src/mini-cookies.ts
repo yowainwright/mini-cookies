@@ -37,3 +37,5 @@ export function miniCookies(options: MiniCookiesOptions = {}) {
 		},
 	}
 }
+
+export default miniCookies
