@@ -25,7 +25,7 @@ cookies.remove('mini'); // no cookie 😫
 
 ### `miniCookies({options})`
 
-> **`{options}`** an object argument of **Mini Cookies** options.
+**`{options}`** an object argument of **Mini Cookies** options.
 
 ---
 
@@ -49,5 +49,5 @@ Removes a cookie by string. params: `<key>`: a string
 
 ## Synopsis
 
-That's it! Mini Cookies is built for simplicity.
+That's it! Mini Cookies is built for simplicity.<br/>
 It has 0 dependencies and is just a few lines of code. 👌
