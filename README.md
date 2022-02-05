@@ -16,9 +16,9 @@ npm i mini-cookies
 import miniCookies from 'mini-cookies';
 
 const cookies = miniCookies();
-cookies.set('mini', 'cookies');
-cookies.get('mini'); // 'cookies'
-cookies.remove('mini'); // no cookie 😫
+cookies.set('mini', 'cookies!!!');
+cookies.get('mini'); // 'cookies!!!'
+cookies.remove('mini'); // no cookie!!! 😫
 ```
 
 ## API
