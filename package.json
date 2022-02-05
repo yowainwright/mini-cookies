@@ -53,5 +53,10 @@
     "src/**/*.ts": [
       "eslint --fix"
     ]
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v%s"
+    }
   }
 }
