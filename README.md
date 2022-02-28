@@ -1,7 +1,5 @@
 # Mini Cookies 🍪
 
-> Workin in progress. Should be be at `0.1.0` very soon!
-
 Mini Cookies is a simple and minimalistic cookie management tool.
 
 ## Install
