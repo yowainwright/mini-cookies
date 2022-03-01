@@ -1,6 +1,6 @@
 import { CookieAttributes, CookieDictionary, CookiesOptions } from "./types";
 
-export function miniCookies(options: CookiesOptions = {}) {
+export default function miniCookies(options: CookiesOptions = {}) {
   return {
     setCookieList(): CookieDictionary {
       return document.cookie
@@ -35,5 +35,3 @@ export function miniCookies(options: CookiesOptions = {}) {
     },
   };
 }
-
-export default miniCookies;

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "outDir": "./dist",
     "rootDir": "src",
     "target": "esnext",
@@ -10,5 +11,5 @@
     "declaration": true,
     "strict": true
   },
-  "exclude": ["**/__tests__/**"]
+  "exclude": ["**/__tests__/**", "rollup.config.ts"]
 }
