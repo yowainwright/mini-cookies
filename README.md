@@ -2,6 +2,16 @@
 
 Mini Cookies is a simple and minimalistic cookie management tool.
 
+
+Use (or try) it in your console right now!
+
+```js
+eval(await (await fetch('https://unpkg.com/mini-cookies@0.1.2/dist/mini-cookies.umd.js')).text())
+const cookies = miniCookies();
+cookies.set('mini', 'cookies!');
+cookies.get('mini'); // cookies!
+```
+
 ## Install
 
 ```bash
@@ -63,3 +73,7 @@ Removes a cookie by string.
 
 That's it! Mini Cookies is built for simplicity.<br/>
 It has 0 dependencies and is just a few lines of code. 👌
+
+## Feature Requests
+
+Yes! I'm happy to add more utility to this lil' `fn` that just makes cookies in the console fun!
