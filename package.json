@@ -1,0 +1,31 @@
+{
+  "name": "mini-cookies",
+  "version": "0.0.0",
+  "description": "The webpage for mini-cookies",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yowainwright/mini-cookies.git"
+  },
+  "author": "Jeff Wainwright <yowainwright@gmail.com> (https://jeffry.in)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yowainwright/mini-cookies/issues"
+  },
+  "homepage": "https://github.com/yowainwright/mini-cookies#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@vitejs/plugin-react": "^1.2.0",
+    "typescript": "^4.6.2",
+    "vite": "^2.8.5"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
