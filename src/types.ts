@@ -2,8 +2,8 @@ export type CookieDictionary = {
   [key: string]: string;
 };
 
-export type CookieAttributes = Record<{
-  days?: string; // ex, 7
+export type CookieAttributes = {
+  days?: number; // ex, 7
   domain?: string; // ex "example.com"
   expires?: Date; // ex, new Date(Date.now())
   ["__Host-"]?: string;
@@ -13,4 +13,4 @@ export type CookieAttributes = Record<{
   samesite?: "lax" | "strict" | "none"; // lax: user tracking level, strick: prevents cross-site cookie sending
   secure?: boolean;
   ["__Secure-"]?: boolean;
-}>;
+};
