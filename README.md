@@ -6,7 +6,7 @@ Mini Cookies is a simple and minimalistic cookie management tool.
 Use (or try) it in your console right now!
 
 ```js
-eval(await (await fetch('https://unpkg.com/mini-cookies@0.1.2/dist/mini-cookies.umd.js')).text())
+eval(await (await fetch('https://unpkg.com/mini-cookies@latest/dist/mini-cookies.umd.js')).text())
 const cookies = miniCookies();
 cookies.set('mini', 'cookies!');
 cookies.get('mini'); // cookies!
