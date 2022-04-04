@@ -14,3 +14,5 @@ export type CookieAttributes = {
   secure?: boolean;
   ["__Secure-"]?: boolean;
 };
+
+export type Options = Record<string, unknown>;
