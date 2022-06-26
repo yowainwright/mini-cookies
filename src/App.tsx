@@ -1,5 +1,5 @@
 import React from 'react'
-import { Emoji, Form, Header } from './components'
+import { Demo, Emoji, Form, Header } from './components'
 
 export default function App() {
 	return (
@@ -8,6 +8,7 @@ export default function App() {
 				<Emoji />
 				<Header />
 				<Form />
+				<Demo />
 			</section>
 		</main>
 	)

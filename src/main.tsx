@@ -8,12 +8,19 @@ import miniCookies from 'mini-cookies'
 const cookies = miniCookies()
 cookies.set('mini', 'cookies')
 // set context
+
+const initialGlobalState = {
+	cookies: [],
+}
 export const Cookies = createContext(cookies)
+export const GlobalState = createContext(initialGlobalState)
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Cookies.Provider value={cookies}>
-			<App />
+			<GlobalState.Provider value={initialGlobalState}>
+				<App />
+			</GlobalState.Provider>
 		</Cookies.Provider>
 	</React.StrictMode>,
 	document.getElementById('root'),
