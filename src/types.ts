@@ -15,4 +15,7 @@ export type CookieAttributes = {
   ["__Secure-"]?: boolean;
 };
 
-export type Options = Record<string, unknown>;
+export type Options = {
+  debug?: boolean;
+  updateState?: undefined | any;
+};
