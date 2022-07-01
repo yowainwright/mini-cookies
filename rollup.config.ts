@@ -45,7 +45,6 @@ export default {
     file: "dist/mini-cookies.umd.js",
     format: "umd",
     name: "miniCookies",
-    exports: "named",
   },
   plugins,
 };
