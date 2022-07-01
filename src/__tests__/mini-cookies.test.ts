@@ -1,6 +1,6 @@
 import { test, it, expect } from "vitest";
-
-import miniCookies, { setCookieAttributes } from "../mini-cookies";
+import { setCookieAttributes } from "../utils";
+import miniCookies from "../mini-cookies";
 
 test("MiniCookies", () => {
   it("miniCookies is defined", () => expect(miniCookies).toBeDefined());
