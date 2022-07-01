@@ -51,11 +51,13 @@ export default function miniCookies({
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
       const current = this.get(`mini-cookies-${this.id}`) || "";
       const currentState = current.length ? JSON.parse(current) : {};
+      console.log({ currentState });
       if (value && this.hasState) {
         const updatedState = {
           ...currentState,
           [name]: { value, attrs },
         };
+        console.log({ updatedState, test: JSON.stringify(updatedState) });
         this.set(`mini-cookies-${this.id}`, JSON.stringify(updatedState));
       } else {
         const { [name]: deleted, ...updatedState } = currentState;
@@ -79,15 +81,13 @@ export default function miniCookies({
       const cookieAttributes = setCookieAttributes(attrs);
       document.cookie = `${name}=${cookieValue};${cookieAttributes}`;
       if (this.hasState) this.updateState(name, value, attrs);
-      if (this.isReview) this.review();
       return this;
     },
 
     // removes a cookie by setting it's expires attribute to -1 and value to empty
     remove(name: string) {
       this.set(name, "", { days: -1 });
-      this.updateState(name, "");
-      if (this.isReview) this.review();
+      if (this.hasState) this.updateState(name, "");
       return this;
     },
   };
