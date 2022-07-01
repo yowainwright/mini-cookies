@@ -1,14 +1,14 @@
 import { setCookieAttributes } from "./utils";
-import { CookieAttributes, CookieDictionary, Options } from "./types";
+import {
+  CookieAttributes,
+  CookieDictionary,
+  Options,
+  TempState,
+} from "./types";
 
 /**
  * Mini Cookies 🍪
- * @description Mini Cookies is a simple and minimalistic cookie management tool.
- */
-
-/**
- * mini-cookies 🍪
- * @description a just a few lines of code cookie manager
+ * @description a just-a-few-lines-of-code cookie manager
  * @param {Options} options no options yet
  * @returns {MiniCookies} a cookie manager factory function
  */
@@ -16,12 +16,10 @@ export default function miniCookies({
   debug = false,
   hasState = false,
 }: Options = {}) {
-  const id = self.crypto.randomUUID();
   return {
-    id,
     hasState,
     isDebugging: debug,
-    isReview: debug && hasState,
+    tempState: {} as TempState,
     setCookieList(): CookieDictionary {
       return document.cookie
         .split(";")
@@ -47,31 +45,25 @@ export default function miniCookies({
       }
     },
 
-    // updates mini-cookie state
+    // updates mini-cookie temp state
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
-      const current = this.get(`mini-cookies-${this.id}`) || "";
-      const currentState = current.length ? JSON.parse(current) : {};
-      console.log({ currentState });
-      if (value && this.hasState) {
+      if (!this.hasState) return;
+      if (value) {
         const updatedState = {
-          ...currentState,
-          [name]: { value, attrs },
+          ...this.tempState,
+          [name]: { value, ...(Object.keys(attrs).length ? { attrs } : {}) },
         };
-        console.log({ updatedState, test: JSON.stringify(updatedState) });
-        this.set(`mini-cookies-${this.id}`, JSON.stringify(updatedState));
-      } else {
-        const { [name]: deleted, ...updatedState } = currentState;
-        this.set(`mini-cookies-${this.id}`, JSON.stringify(updatedState));
+        this.tempState = updatedState;
+      } else if (Object.keys(this.tempState).length) {
+        const { [name]: deleted, ...updatedState } = this.tempState;
+        this.tempState = updatedState;
       }
-      if (this.isReview) this.review();
       return this;
     },
 
     review() {
-      const current = this.get(`mini-cookies-${this.id}`) || "";
-      const currentState = current.length ? JSON.parse(current) : {};
       console.info({
-        [`mini-cookies-🍪!`]: { id: this.id, cookies: currentState },
+        [`mini-cookies-🍪!`]: this.tempState,
       });
     },
 
@@ -80,14 +72,14 @@ export default function miniCookies({
       const cookieValue = encodeURIComponent(value);
       const cookieAttributes = setCookieAttributes(attrs);
       document.cookie = `${name}=${cookieValue};${cookieAttributes}`;
-      if (this.hasState) this.updateState(name, value, attrs);
+      this.updateState(name, value, attrs);
       return this;
     },
 
     // removes a cookie by setting it's expires attribute to -1 and value to empty
     remove(name: string) {
       this.set(name, "", { days: -1 });
-      if (this.hasState) this.updateState(name, "");
+      this.updateState(name, "");
       return this;
     },
   };
