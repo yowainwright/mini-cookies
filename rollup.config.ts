@@ -13,7 +13,7 @@ import {
 } from "./package.json";
 
 const banner = `/**
-  ${name} - ${description}
+  @preserve ${name} - ${description}
   @version v${version}
   @link ${homepage}
   @author ${author}
@@ -30,12 +30,18 @@ const plugins = [
     moduleResolution: "node",
     resolveJsonModule: true,
   }),
-  uglify(),
+  uglify({
+    output: {
+      comments: (_, { type, value }) =>
+        type === "comment2" ? /@preserve/i.test(value) : false,
+    },
+  }),
 ];
 
 export default {
   input: "src/mini-cookies.ts",
   output: {
+    banner,
     file: "dist/mini-cookies.umd.js",
     format: "umd",
     name: "miniCookies",
