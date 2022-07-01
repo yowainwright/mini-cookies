@@ -19,3 +19,9 @@ export type Options = {
   debug?: boolean;
   hasState?: boolean;
 };
+
+export type TempState = {
+  [x: string]:
+    | Record<string, Record<string, string> | undefined>
+    | { attrs?: CookieAttributes | undefined; value: string };
+};
