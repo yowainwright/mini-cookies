@@ -41,10 +41,16 @@ export function setCookieAttributes(attrs: CookieAttributes): string {
  * @param {Options} options no options yet
  * @returns {MiniCookies} a cookie manager factory function
  */
-export default function miniCookies({ debug = false }: Options = {}) {
+export default function miniCookies({
+  debug = false,
+  hasState = false,
+}: Options = {}) {
   const id = self.crypto.randomUUID();
   return {
     id,
+    hasState,
+    isDebugging: debug,
+    isReview: debug && hasState,
     setCookieList(): CookieDictionary {
       return document.cookie
         .split(";")
@@ -61,7 +67,7 @@ export default function miniCookies({ debug = false }: Options = {}) {
     // returns a cookie value if available
     get(name: string) {
       const cookies = this.setCookieList();
-      if (debug)
+      if (this.isDebugging)
         console.debug({
           [`mini-cookies-🍪!`]: { name, value: cookies[name] },
         });
@@ -74,7 +80,7 @@ export default function miniCookies({ debug = false }: Options = {}) {
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
       const current = this.get(`mini-cookies-${this.id}`) || "";
       const currentState = current.length ? JSON.parse(current) : {};
-      if (value) {
+      if (value && this.hasState) {
         const updatedState = {
           ...currentState,
           [name]: { value, attrs },
@@ -84,7 +90,7 @@ export default function miniCookies({ debug = false }: Options = {}) {
         const { [name]: deleted, ...updatedState } = currentState;
         this.set(`mini-cookies-${this.id}`, JSON.stringify(updatedState));
       }
-      if (debug) this.review();
+      if (this.isReview) this.review();
       return this;
     },
 
@@ -101,8 +107,8 @@ export default function miniCookies({ debug = false }: Options = {}) {
       const cookieValue = encodeURIComponent(value);
       const cookieAttributes = setCookieAttributes(attrs);
       document.cookie = `${name}=${cookieValue};${cookieAttributes}`;
-      this.updateState(name, value, attrs);
-      if (debug) this.review();
+      if (this.hasState) this.updateState(name, value, attrs);
+      if (this.isReview) this.review();
       return this;
     },
 
@@ -110,7 +116,7 @@ export default function miniCookies({ debug = false }: Options = {}) {
     remove(name: string) {
       this.set(name, "", { days: -1 });
       this.updateState(name, "");
-      if (debug) this.review();
+      if (this.isReview) this.review();
       return this;
     },
   };
