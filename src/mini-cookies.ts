@@ -11,8 +11,9 @@ import { CookieAttributes, CookieDictionary, Options } from "./types";
  * @param {CookieAttributes} attrs cookie attributes
  * @returns {string}
  */
-export function setCookieAttributes(attrs: CookieAttributes): string {
+export function setCookieAttributes(attrs: CookieAttributes = {}): string {
   const items = Object.keys(attrs);
+  if (!items.length) return "";
   // prefer days over expires attribute
   const filteredAttrs = items.every((attr) =>
     ["days", "expires"].includes(attr)
