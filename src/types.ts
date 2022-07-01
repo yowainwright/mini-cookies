@@ -17,5 +17,5 @@ export type CookieAttributes = {
 
 export type Options = {
   debug?: boolean;
-  hasState?: undefined | any;
+  hasState?: boolean;
 };
