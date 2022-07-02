@@ -1,37 +1,26 @@
-import { setCookieAttributes } from "./utils";
 import {
-  CookieAttributes,
-  CookieDictionary,
-  Options,
-  TempState,
-} from "./types";
+  generateRandomNumber,
+  setCookieAttributes,
+  setCookieList,
+} from "./utils";
+import { CookieAttributes, Options } from "./types";
 
 /**
  * Mini Cookies 🍪
  * @description a just-a-few-lines-of-code cookie manager
- * @param {Options} options no options yet
- * @returns {MiniCookies} a cookie manager factory function
+ * @param {object} options no options yet
+ * @returns {object} a cookie manager factory function
  */
 export default function miniCookies({
   debug = false,
   hasState = false,
+  id = `mini-cookies-${generateRandomNumber(8)}`,
 }: Options = {}) {
   return {
     hasState,
     isDebugging: debug,
-    tempState: {} as TempState,
-    setCookieList(): CookieDictionary {
-      return document.cookie
-        .split(";")
-        .map((cookie: string) => cookie.split("="))
-        .reduce(
-          (list, [key, value]) => ({
-            ...list,
-            [key.trim()]: decodeURIComponent(value),
-          }),
-          {}
-        );
-    },
+    id,
+    setCookieList,
 
     // returns a cookie value if available
     get(name: string) {
@@ -48,23 +37,30 @@ export default function miniCookies({
     // updates mini-cookie temp state
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
       if (!this.hasState) return;
+      const currentState = localStorage.get(this.id) || {};
       if (value) {
         const updatedState = {
-          ...this.tempState,
+          ...currentState,
           [name]: { value, ...(Object.keys(attrs).length ? { attrs } : {}) },
         };
-        this.tempState = updatedState;
-      } else if (Object.keys(this.tempState).length) {
-        const { [name]: deleted, ...updatedState } = this.tempState;
-        this.tempState = updatedState;
+        localStorage.set(this.id, updatedState);
+      } else if (Object.keys(currentState).length) {
+        const { [name]: deleted, ...updatedState } = currentState;
+        localStorage.set(this.id, updatedState);
       }
       return this;
     },
 
+    // returns log of state
     review() {
-      console.info({
-        [`mini-cookies-🍪!`]: this.tempState,
-      });
+      if (this.hasState)
+        console.info({
+          [`mini-cookies-🍪!`]: localStorage.get(this.id) || {},
+        });
+      else
+        console.info({
+          [`mini-cookies-🍪!`]: `Mini cookie instance ${this.id} is not tracking state 👌`,
+        });
     },
 
     // sets a cookie with attributes
