@@ -111,13 +111,14 @@ Removes a cookie by string.
 
 Returns a `console.log` of the current state of cookies.
 
-\***`hasState` must be enabled for this to work!
-
-##### param
-
-- `<key>`: a string
+\***`hasState`** must be enabled for this to work!
 
 ---
+
+## Roadmap
+
+- Provide attribute examples
+- Get website up
 
 ## Feature Requests
 
