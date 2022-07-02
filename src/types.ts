@@ -21,7 +21,7 @@ export type Options = {
   id?: string;
 };
 
-export type TempState = {
+export type State = {
   [x: string]:
     | Record<string, Record<string, string> | undefined>
     | { attrs?: CookieAttributes | undefined; value: string };
