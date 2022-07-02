@@ -13,6 +13,12 @@ cookies.get('mini'); // cookies!
 
 \*Evaling won't work on sites that don't allow the`unpkg` domain.
 
+---
+
+[**Why**](#why-mini-cookies) | [**Install**](#install) | [**Usage**](#usage) | [**API**](#api) | [**Roadmap**](#roadmap) | [**Feature Requests**](#feature-requests)
+
+---
+
 ## Why Mini Cookies?
 
 Mini Cookie's API is very small. It's size is also very small. Even though Mini Cookies is super small, it's built to make setting up `document.cookie`'s easy!
@@ -106,6 +112,8 @@ Removes a cookie by string.
 ##### param
 
 - `<key>`: a string
+
+---
 
 #### `miniCookies({options}).review()`
 
