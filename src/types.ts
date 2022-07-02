@@ -18,10 +18,26 @@ export type CookieAttributes = {
 export type Options = {
   debug?: boolean;
   hasState?: boolean;
+  id?: string;
 };
 
 export type TempState = {
   [x: string]:
     | Record<string, Record<string, string> | undefined>
     | { attrs?: CookieAttributes | undefined; value: string };
+};
+
+export type UpdateState = (
+  name: string,
+  value: string,
+  attrs: CookieAttributes
+) => void;
+
+export type MiniCookiesFactory = {
+  hasState: boolean;
+  isDebugging: boolean;
+  get: (name: string) => string | undefined;
+  set: (name: string, value: string) => void;
+  remove: (name: string) => void;
+  updateState: UpdateState;
 };
