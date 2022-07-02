@@ -3,7 +3,7 @@ import {
   setCookieAttributes,
   setCookieList,
 } from "./utils";
-import { CookieAttributes, Options } from "./types";
+import { CookieAttributes, Options, State } from "./types";
 
 /**
  * Mini Cookies 🍪
@@ -37,30 +37,36 @@ export default function miniCookies({
     // updates mini-cookie temp state
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
       if (!this.hasState) return;
-      const currentState = localStorage.get(this.id) || {};
+      const currentStorage = localStorage.getItem(this.id);
+      const currentState = (
+        currentStorage ? JSON.parse(currentStorage) : {}
+      ) as State;
       if (value) {
         const updatedState = {
           ...currentState,
           [name]: { value, ...(Object.keys(attrs).length ? { attrs } : {}) },
         };
-        localStorage.set(this.id, updatedState);
+        localStorage.setItem(this.id, JSON.stringify(updatedState));
       } else if (Object.keys(currentState).length) {
         const { [name]: deleted, ...updatedState } = currentState;
-        localStorage.set(this.id, updatedState);
+        localStorage.setItem(this.id, JSON.stringify(updatedState));
       }
       return this;
     },
 
     // returns log of state
     review() {
-      if (this.hasState)
+      if (this.hasState) {
+        const currentStorage = localStorage.getItem(this.id);
+        const currentState = currentStorage ? JSON.parse(currentStorage) : {};
         console.info({
-          [`mini-cookies-🍪!`]: localStorage.get(this.id) || {},
+          [`mini-cookies-🍪!`]: currentState,
         });
-      else
+      } else {
         console.info({
           [`mini-cookies-🍪!`]: `Mini cookie instance ${this.id} is not tracking state 👌`,
         });
+      }
     },
 
     // sets a cookie with attributes
