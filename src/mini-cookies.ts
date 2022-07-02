@@ -8,7 +8,7 @@ import { CookieAttributes, Options } from "./types";
 /**
  * Mini Cookies 🍪
  * @description a just-a-few-lines-of-code cookie manager
- * @param {params} options no options yet
+ * @param {object} options no options yet
  * @returns {object} a cookie manager factory function
  */
 export default function miniCookies({

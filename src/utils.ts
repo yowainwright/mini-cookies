@@ -1,5 +1,11 @@
 import { CookieAttributes, CookieDictionary } from "./types";
 
+/**
+ * generateRandomNumber
+ * @description generates a random number with the length of the number provided
+ * @param {number} number
+ * @returns {string}
+ */
 export function generateRandomNumber(n: number): string {
   return Array.from({ length: n })
     .map((_) => (Math.random() * 10) | 0)
@@ -9,7 +15,7 @@ export function generateRandomNumber(n: number): string {
 /**
  * setCookieAttributes
  * @description a cookie attribute manager
- * @param {CookieAttributes} attrs cookie attributes
+ * @param {object} attrs cookie attributes
  * @returns {string}
  */
 export function setCookieAttributes(attrs: CookieAttributes = {}): string {
@@ -37,6 +43,11 @@ export function setCookieAttributes(attrs: CookieAttributes = {}): string {
   }, "");
 }
 
+/**
+ * setCookieList
+ * @description returns a cookie dictionary
+ * @returns {object}
+ */
 export function setCookieList(): CookieDictionary {
   return document.cookie
     .split(";")
