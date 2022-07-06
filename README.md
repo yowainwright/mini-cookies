@@ -15,7 +15,7 @@ cookies.get('mini'); // cookies!
 
 ---
 
-[**Why**](#why-mini-cookies) | [**Install**](#install) | [**Usage**](#usage) | [**API**](#api) | [**Roadmap**](#roadmap) | [**Feature Requests**](#feature-requests)
+[**🤔 Why**](#why-mini-cookies) | [**📦 Install**](#install) | [**⚙️ Usage**](#usage) | [**🧬 API**](#api) | [**🗺 Roadmap**](#roadmap) | [**🎖 Feature Requests**](#feature-requests)
 
 ---
 
@@ -117,7 +117,7 @@ Removes a cookie by string.
 
 #### `miniCookies({options}).review()`
 
-Returns a `console.log` of the current state of cookies.
+Returns mini-cookie state.
 
 \***`hasState`** must be enabled for this to work!
 
