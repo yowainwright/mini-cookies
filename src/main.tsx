@@ -5,7 +5,7 @@ import App from './App'
 import miniCookies from 'mini-cookies'
 
 // instantiate  mini-cookies and set a default cookie
-const cookies = miniCookies()
+const cookies = miniCookies({ debug: true, hasState: true })
 cookies.set('mini', 'cookies')
 // set context
 
