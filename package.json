@@ -38,7 +38,7 @@
     "rollup-plugin-uglify": "^6.0.4",
     "tslib": "^2.3.1",
     "typescript": "^4.7.4",
-    "vitest": "^0.16.0"
+    "vitest": "^0.17.0"
   },
   "commitlint": {
     "extends": [
