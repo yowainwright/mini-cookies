@@ -15,7 +15,7 @@
   "scripts": {
     "build": "rimraf dist && pnpm transpile",
     "lint": "eslint src/**/*.ts",
-    "prepare": "husky install; pnpm node",
+    "prepare": "husky install",
     "prepublishOnly": "pnpm test && pnpm build",
     "release": "release-it",
     "test": "vitest run",
