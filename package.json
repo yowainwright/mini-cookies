@@ -8,6 +8,10 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=7.0.0"
+  },
   "scripts": {
     "build": "rimraf dist && pnpm transpile",
     "lint": "eslint src/**/*.ts",

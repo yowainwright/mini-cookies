@@ -32,7 +32,7 @@ More over, you don't need to use Mini Cookie state! It is opt-in only. This is g
 ## Install
 
 ```bash
-npm i mini-cookies
+npm install mini-cookies
 ```
 
 ## Use
