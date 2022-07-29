@@ -48,18 +48,24 @@ body {}
   }
 
   &__input {
-    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
     width: calc(100% - 1rem);
   }
 
   &__button {
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
     border: 0;
+    color: #000;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
     outline: 0;
     width: 100%
   }
 
   &__desc {
-    margin: 1rem auto;
+    font-size: 1.25rem;
+    margin: 1rem auto 1.5rem;
     max-width: 50rem;
   }
 
@@ -85,6 +91,8 @@ body {}
   }
 
   &__h2 {
+    font-size: 2.5rem;
+    margin: 0;
     text-align: center;
   }
 
@@ -133,7 +141,7 @@ body {}
   &__form-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
+    grid-gap: 1.5rem;
   }
 
   &__remove {
