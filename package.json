@@ -20,7 +20,14 @@
   "homepage": "https://github.com/yowainwright/mini-cookies#readme",
   "devDependencies": {
     "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
     "@vitejs/plugin-react": "^1.2.0",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "sass": "^1.49.11",
+    "tslib": "^2.4.0",
+    "tsutils": "^3.21.0",
     "typescript": "^4.6.2",
     "vite": "^2.8.5"
   },
@@ -28,7 +35,6 @@
     "mini-cookies": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.29.0",
-    "sass": "^1.49.11"
+    "react-hook-form": "^7.29.0"
   }
 }

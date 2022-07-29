@@ -28,7 +28,6 @@ export const GlobalState = createContext()
 export default function App() {
 	const initialState = cookies.review();
 	const [state, dispatch] = useReducer(reducer, initialState)
-	console.log({ state });
 	return (
 			<Dispatch.Provider value={dispatch}>
 				<GlobalState.Provider value={state}>
