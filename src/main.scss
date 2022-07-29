@@ -19,12 +19,12 @@ body {}
 
     @media(min-width: 50rem) {
       font-size: 4rem;
-      padding: 2rem 0;
+      padding: 2rem 0 0;
     }
   }
 
   &__header,
-  &__form,
+  &__container,
   &__demo {
     margin: 0 auto;
     max-width: calc(100% - 4rem);
@@ -58,7 +58,10 @@ body {}
     width: 100%
   }
 
-  &__desc {}
+  &__desc {
+    margin: 1rem auto;
+    max-width: 50rem;
+  }
 
   &__section {
     background: rgb(2,0,36);
@@ -70,10 +73,26 @@ body {}
     width: 100%;
   }
 
+  &__container {
+    position: relative;
+  }
+
+  &__screen {
+    background-color: rgba(16,16,140,.5);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  &__h2 {
+    text-align: center;
+  }
+
   &__demo {
     display: grid;
-    grid-gap: .25rem;
+    grid-gap: 2.2rem;
     grid-template-columns: repeat(auto-fill, 8rem);
+    padding: 1rem 0;
     position: relative;
 
     @media(min-width: 50rem) {}
@@ -91,6 +110,8 @@ body {}
   }
 
   &__figure {
+    border-radius: .25rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
     height: 5rem;
     margin: 0;
     padding: .5rem;
@@ -98,11 +119,13 @@ body {}
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
   &__caption {
     position: relative;
     text-align: center;
+    text-shadow: 0 2px 2px #000;
     width: 100%;
     z-index: 1;
   }
@@ -111,5 +134,15 @@ body {}
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
+  }
+
+  &__remove {
+    background: transparent;
+    border: 0;
+    color: white;
+    outline: 0;
+    position: absolute;
+    top: .1rem;
+    right: .1rem;
   }
 }
