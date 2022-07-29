@@ -3,29 +3,113 @@ html, body {
   padding: 0;
 }
 
-body {
-  // background-color: #a4508b;
-  // background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
-  background: rgb(2,0,36);
-  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(16,16,140,1) 50%, rgba(126,2,195,1) 100%);
-  color: #fff;
-  font-family: sans-serif;
-  height: 100vh;
-  width: 100%;
-}
+body {}
 
 .mc {
-  &__h1 {
+  &__h1,
+  &__caption {
     font-family: 'Press Start 2P';
-    font-size: 4rem;
+  }
+
+  &__h1 {
+    font-size: 2rem;
+    margin: 0;
+    padding: 1rem 0 0;
     text-align: center;
+
+    @media(min-width: 50rem) {
+      font-size: 4rem;
+      padding: 2rem 0;
+    }
   }
 
   &__header,
-  &__form {
+  &__form,
+  &__demo {
     margin: 0 auto;
-    max-width: 50rem;
+    max-width: calc(100% - 4rem);
+
+    @media(min-width: 50rem) {
+      max-width: 50rem;
+    }
   }
 
-  &_desc {}
+  &__header {}
+
+  &__form {}
+
+  &__input,
+  &__button {
+    border: 0;
+    border-radius: .25rem;
+    display: block;
+    outline: 0;
+    padding: .5rem;
+  }
+
+  &__input {
+    margin-bottom: 1rem;
+    width: calc(100% - 1rem);
+  }
+
+  &__button {
+    border: 0;
+    outline: 0;
+    width: 100%
+  }
+
+  &__desc {}
+
+  &__section {
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(16,16,140,1) 50%, rgba(126,2,195,1) 100%);
+    color: #fff;
+    font-family: sans-serif;
+    height: 100vh;
+    min-height: 37.5rem;
+    width: 100%;
+  }
+
+  &__demo {
+    display: grid;
+    grid-gap: .25rem;
+    grid-template-columns: repeat(auto-fill, 8rem);
+    position: relative;
+
+    @media(min-width: 50rem) {}
+  }
+
+  &__cookie {
+    font-size: 5rem;
+    height: 5rem;
+    line-height: 1;
+    position: absolute;
+    width: 5rem;
+    z-index: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__figure {
+    height: 5rem;
+    margin: 0;
+    padding: .5rem;
+    width: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__caption {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
 }
