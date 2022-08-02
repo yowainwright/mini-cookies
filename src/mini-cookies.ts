@@ -3,7 +3,7 @@ import {
   setCookieAttributes,
   setCookieList,
 } from "./utils";
-import { CookieAttributes, Options, State } from "./types";
+import { CookieAttributes, CookieFactory, Options, State } from "./types";
 
 /**
  * Mini Cookies 🍪
@@ -15,7 +15,7 @@ export default function miniCookies({
   debug = false,
   hasState = false,
   id = `mini-cookies-${generateRandomNumber(8)}`,
-}: Options = {}) {
+}: Options = {}): CookieFactory {
   return {
     hasState,
     isDebugging: debug,
@@ -23,7 +23,7 @@ export default function miniCookies({
     setCookieList,
 
     // returns a cookie value if available
-    get(name: string) {
+    get(name: string): string | void {
       const cookies = this.setCookieList();
       if (this.isDebugging)
         console.debug({
@@ -36,7 +36,7 @@ export default function miniCookies({
 
     // updates mini-cookie temp state
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
-      if (!this.hasState) return;
+      if (!this.hasState) return this;
       const currentStorage = localStorage.getItem(this.id);
       const currentState = (
         currentStorage ? JSON.parse(currentStorage) : {}
@@ -65,7 +65,7 @@ export default function miniCookies({
         const currentState = currentStorage ? JSON.parse(currentStorage) : {};
         if (this.isDebugging)
           console.info({
-            [`mini-cookies-🍪!`]: currentState,
+            [`mini-cookies`]: currentState,
           });
         return currentState;
       } else {

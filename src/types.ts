@@ -41,3 +41,15 @@ export type MiniCookiesFactory = {
   remove: (name: string) => void;
   updateState: UpdateState;
 };
+
+export type CookieFactory = {
+  hasState: boolean;
+  isDebugging: boolean;
+  id: string;
+  setCookieList: () => CookieDictionary;
+  get: (name: string) => string | void;
+  updateState: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory;
+  review: () => CookieDictionary;
+  set: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory
+  remove: (name: string) => CookieFactory
+}
