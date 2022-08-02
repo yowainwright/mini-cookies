@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 
 import { lettersOnly } from '../utils'
 import { Dispatch, GlobalState } from './../App'
+import { Demo } from './Demo';
 
 const options = {
 	required: true,
@@ -20,6 +21,7 @@ const initialState = {
 
 export function Form() {
 	const cookies = useContext(GlobalState)
+	console.log({ cookies });
 	const dispatch = useContext(Dispatch)
 	const [state, setState] = useState(initialState)
 	const { getValues, handleSubmit, register, reset, setValue } = useForm({
@@ -27,7 +29,7 @@ export function Form() {
 		defaultValues,
 	})
 
-	const hasFivePlusCookies = Object.keys(cookies).length >= 5;
+	const hasFivePlusCookies = Object.keys(cookies)?.length >= 5;
 
 	function onSubmit() {
 		const { name, value, isValid } = state
@@ -55,7 +57,11 @@ export function Form() {
 	}
 
 	return (
-		<div className='mc__container'>
+		<div className='mc__container mc__container--form'>
+			<h2 className="mc__h2">Try it out!</h2>
+			<p className="mc__desc">
+				1. Fill out the form to add a browser cookie using mini-cookies.
+			</p>
 			{hasFivePlusCookies && (
 				<div className='mc__screen'>
 					<h2 className='mc__h2'>Remove a cookie to enable the form!</h2>
@@ -86,6 +92,7 @@ export function Form() {
 					Add a cookie!
 				</button>
 			</form>
+			<Demo />
 		</div>
 	)
 }

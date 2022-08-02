@@ -67,6 +67,12 @@ body {}
     font-size: 1.25rem;
     margin: 1rem auto 1.5rem;
     max-width: 50rem;
+    &--center {
+      text-align: center;
+    }
+    & span {
+      font-size: 2rem;
+    }
   }
 
   &__section {
@@ -74,13 +80,22 @@ body {}
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(16,16,140,1) 50%, rgba(126,2,195,1) 100%);
     color: #fff;
     font-family: sans-serif;
-    height: 100vh;
     min-height: 37.5rem;
+    padding-bottom: 2rem;;
     width: 100%;
   }
 
   &__container {
     position: relative;
+    &--form {
+      border: .25rem solid #fff;
+      border-radius: .5rem;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+      padding: 1.5rem;
+      @media(min-width: 50rem) {
+        padding: 2rem;
+      }
+    }
   }
 
   &__screen {

@@ -1,22 +1,18 @@
 import React, { createContext, useReducer } from 'react'
 import miniCookies from 'mini-cookies'
-import { Demo,  Form, Header } from './components'
+import { Form, Header } from './components'
 
 // instantiate  mini-cookies and set a default cookie
 const cookies = miniCookies({ debug: true, hasState: true })
 cookies.set('mini', 'cookies')
 // set context
 
-const initialGlobalState = {}
-
-export function reducer(state, { payload, type }) {
+export function reducer(state, { payload: { name, value }, type }) {
   switch (type) {
     case 'SET_STATE':
-			const { name, value } = payload;
 			if (value) cookies.set(name, value);
 			else cookies.remove(name);
-			const updatedState = cookies.review();
-      return updatedState;
+			return cookies.review();
     default:
       return state
   }
@@ -35,7 +31,6 @@ export default function App() {
 						<section className="mc__section mc__section--display">
 							<Header />
 							<Form />
-							<Demo />
 						</section>
 					</main>
 				</GlobalState.Provider>

@@ -32,7 +32,7 @@
     "vite": "^2.8.5"
   },
   "dependencies": {
-    "mini-cookies": "^0.3.0",
+    "mini-cookies": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.29.0"
