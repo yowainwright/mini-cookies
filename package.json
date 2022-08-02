@@ -1,7 +1,7 @@
 {
   "name": "mini-cookies",
   "description": "A simple and minimalistic cookie management tool 🍪",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "dist/mini-cookies.js",
   "types": "dist/mini-cookies.d.ts",
   "unpkg": "dist/mini-cookies.umd.js",
