@@ -23,9 +23,17 @@ body {}
     }
   }
 
+  &__h2 {
+    font-size: 2.5rem;
+    margin: 0;
+    text-align: center;
+    &--default {
+      color: #000;
+    }
+  }
+
   &__header,
-  &__container,
-  &__demo {
+  &__container {
     margin: 0 auto;
     max-width: calc(100% - 4rem);
 
@@ -34,9 +42,19 @@ body {}
     }
   }
 
-  &__header {}
-
-  &__form {}
+   &__container {
+    &--form {
+      border: .25rem solid #fff;
+      border-radius: .5rem;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+      max-width: calc(100% - 6rem);
+      padding: 1.5rem;
+      @media(min-width: 50rem) {
+        max-width: 45rem;
+        padding: 2rem;
+      }
+    }
+  }
 
   &__input,
   &__button {
@@ -85,17 +103,8 @@ body {}
     width: 100%;
   }
 
-  &__container {
+  &__form {
     position: relative;
-    &--form {
-      border: .25rem solid #fff;
-      border-radius: .5rem;
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
-      padding: 1.5rem;
-      @media(min-width: 50rem) {
-        padding: 2rem;
-      }
-    }
   }
 
   &__screen {
@@ -105,16 +114,10 @@ body {}
     position: absolute;
   }
 
-  &__h2 {
-    font-size: 2.5rem;
-    margin: 0;
-    text-align: center;
-  }
-
   &__demo {
     display: grid;
-    grid-gap: 2.2rem;
-    grid-template-columns: repeat(auto-fill, 8rem);
+    grid-gap: 2.6rem;
+    grid-template-columns: repeat(auto-fill, 9rem);
     padding: 1rem 0;
     position: relative;
 
@@ -122,11 +125,11 @@ body {}
   }
 
   &__cookie {
-    font-size: 5rem;
-    height: 5rem;
+    font-size: 7rem;
+    height: 7rem;
     line-height: 1;
     position: absolute;
-    width: 5rem;
+    width: 7rem;
     z-index: 0;
     top: 50%;
     transform: translateY(-50%);
@@ -135,10 +138,10 @@ body {}
   &__figure {
     border-radius: .25rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-    height: 5rem;
+    height: 7rem;
     margin: 0;
     padding: .5rem;
-    width: 8rem;
+    width: 9rem;
     display: flex;
     align-items: center;
     justify-content: center;

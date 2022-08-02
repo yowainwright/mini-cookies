@@ -32,12 +32,13 @@ export function Demo() {
 	const cookieList = Object.keys(state).map(name => state[name]);
 	return (
 		<>
-		<p className="mc__desc">2. Each card below is rendered by reading from Mini-Cookies!</p>
-		<div className="mc__demo">
-			{cookieList.map(({ name, value}, key) => <Cookie name={name} value={value} key={key} />)}
-		</div>
-		<p className="mc__desc">3. View your Document.cookies in dev-tools / Application / cookies</p>
-		<p className='mc__desc'>4. View Mini Cookies  state in the dev-tools / Console</p>
+			<p className="mc__desc">2. Each card below is rendered by reading from Mini-Cookies!</p>
+			<div className="mc__demo">
+				{cookieList.map(({ name, value}, key) => <Cookie name={name} value={value} key={key} />)}
+			</div>
+			<p className="mc__desc">
+				*View your Document.cookies in dev-tools, application, cookies. View Mini Cookies  state in the dev-tools, console! 👌
+			</p>
 		</>
 	)
 }

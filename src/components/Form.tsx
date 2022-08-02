@@ -29,7 +29,7 @@ export function Form() {
 		defaultValues,
 	})
 
-	const hasFivePlusCookies = Object.keys(cookies)?.length >= 5;
+	const hasFivePlusCookies = Object.keys(cookies)?.length >= 4;
 
 	function onSubmit() {
 		const { name, value, isValid } = state
@@ -62,11 +62,11 @@ export function Form() {
 			<p className="mc__desc">
 				1. Fill out the form to add a browser cookie using mini-cookies.
 			</p>
-			{hasFivePlusCookies && (
-				<div className='mc__screen'>
-					<h2 className='mc__h2'>Remove a cookie to enable the form!</h2>
-				</div>)}
 			<form className="mc__form" onSubmit={handleSubmit(onSubmit)}>
+				{hasFivePlusCookies && (
+				<div className='mc__screen'>
+					<h2 className='mc__h2 mc__h2--default'>Remove a cookie to enable the form!</h2>
+				</div>)}
 				<div className='mc__form-group'>
 					<input
 						{...register('name', options)}
