@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react'
 import miniCookies from 'mini-cookies'
-import { Form, Header } from './components'
+import { Form, Header, Docs } from './components'
 
 // instantiate  mini-cookies and set a default cookie
 const cookies = miniCookies({ debug: true, hasState: true })
@@ -31,6 +31,9 @@ export default function App() {
 						<section className="mc__section mc__section--display">
 							<Header />
 							<Form />
+						</section>
+						<section className="mc__section mc__section--docs">
+							<Docs />
 						</section>
 					</main>
 				</GlobalState.Provider>
