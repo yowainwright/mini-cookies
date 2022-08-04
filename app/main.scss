@@ -5,7 +5,10 @@ html, body {
 }
 
 hr {
+  border: 0;
+  border-bottom: 1px solid #ccc;
   margin: 2rem auto;
+  outline: 0;
 }
 
 code {
@@ -22,7 +25,7 @@ code {
 
 li, p {
   font-size: 1.2rem;
-  line-height: 1.8;
+  line-height: 1.5;
   margin: 1rem 0;
 }
 
@@ -130,9 +133,10 @@ h5 {
     }
     &--docs {
       padding: 2rem 0;
-
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Press Start 2P';
+      h2 {
+        border-bottom: 1px solid #ccc;
+        font-size: 2rem;
+        padding-bottom: .5rem;
       }
     }
   }
@@ -215,8 +219,6 @@ h5 {
   }
 }
 
-
-
 pre[class*='language-'],
 code[class*='language-'] {
   color: #ff0000;
@@ -230,10 +232,6 @@ code[class*='language-'] {
   line-height: 1.5;
   tab-size: 4;
   hyphens: none;
-
-  .js-is-darkmode & {
-    color: #b3d8e5;
-  }
 }
 
 pre[class*='language-']::selection,
@@ -271,11 +269,6 @@ pre[class*='language-'] {
   border-radius: 0.3rem;
   color: #007cf0;
   background: #f9f9f9;
-
-  .js-is-darkmode & {
-    color: #b3d8e5;
-    background: #031030;
-  }
 }
 
 .namespace {
@@ -322,20 +315,12 @@ pre[class*='language-'] {
 .style .token.string {
   color: #000;
   background: #f9f9f9;
-
-  .js-is-darkmode & {
-    color: #e194b5;
-    background: #031030;
-  }
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
   color: #555;
-  .js-is-darkmode & {
-    color: #e194b5;
-  }
 }
 
 .token.function {
@@ -382,13 +367,4 @@ pre[class*='language-'] > code[class*='language-'] {
   pointer-events: none;
   line-height: inherit;
   white-space: pre;
-
-  .js-is-darkmode & {
-    background: #395bb1;
-    box-shadow: inset 5px 0 0 #193b8f;
-  }
-}
-
-.gatsby-highlight {
-  margin: 2rem auto;
 }
