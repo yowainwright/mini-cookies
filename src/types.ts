@@ -49,6 +49,7 @@ export type CookieFactory = {
   setCookieList: () => CookieDictionary;
   get: (name: string) => string | void;
   updateState: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory;
+  clearState: () => CookieFactory;
   review: () => CookieDictionary;
   set: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory
   remove: (name: string) => CookieFactory

@@ -28,3 +28,19 @@ test("attributes", () => {
     expect(result).toContain("expires=");
   });
 });
+
+test("MiniCookies state", () => {
+  it('updates state', () => {
+    const cookies = miniCookies({ hasState: true });
+    cookies.set('biz', 'buzz');
+    expect(cookies.review()).toEqual({ biz: { name: 'biz', value: 'buzz' } });
+  });
+
+  it('clears state', () => {
+     const cookies = miniCookies({ hasState: true });
+    cookies.set('flower', 'power');
+    expect(cookies.review()).toEqual({ flower: { name: 'flower', value: 'power' } });
+    cookies.clearState();
+    expect(cookies.review()).toEqual({});
+  });
+});
