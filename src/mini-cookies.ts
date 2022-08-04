@@ -27,7 +27,7 @@ export default function miniCookies({
       const cookies = this.setCookieList();
       if (this.isDebugging)
         console.debug({
-          [`mini-cookies-🍪!`]: { name, value: cookies[name] },
+          [`mini-cookies`]: { name, value: cookies[name] },
         });
       if (cookies[name]) {
         return cookies[name];
@@ -58,6 +58,12 @@ export default function miniCookies({
       return this;
     },
 
+    clearState() {
+      if (!this.hasState) return this;
+      localStorage.removeItem(this.id);
+      return this;
+    },
+
     // returns log of state
     review() {
       if (this.hasState) {
@@ -71,7 +77,7 @@ export default function miniCookies({
       } else {
         if (this.isDebugging)
           console.info({
-            [`mini-cookies-🍪!`]: `Mini cookie instance ${this.id} is not tracking state 👌`,
+            [`mini-cookies`]: `Mini cookie instance ${this.id} is not tracking state 👌`,
           });
       }
     },
