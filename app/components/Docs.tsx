@@ -4,7 +4,7 @@ import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import githubTheme from 'prism-react-renderer/themes/github';
 import { MDXComponents } from 'mdx/types';
 
-import General from '../mdx/general.mdx';
+import Readme from './readme.mdx';
 const components = {
   pre: ({ children: { props: { children, className = '' }}}) => {
     const matches = className?.match(/language-(?<lang>.*)/);
@@ -37,7 +37,7 @@ const components = {
 export const Docs = () => (
   <MDXProvider components={components as MDXComponents}>
     <div className='mc__container mc__container--docs'>
-      <General />
+      <Readme />
     </div>
   </MDXProvider>
 )

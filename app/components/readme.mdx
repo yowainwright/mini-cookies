@@ -17,9 +17,13 @@ cookies.get('mini'); // cookies!
 
 ## Why Mini Cookies?
 
-Mini Cookie's API is very small. It's size is also very small. Even though Mini Cookies is super small, it's built to make setting up `document.cookie`'s easy!
+Mini Cookie's API is very small. It's size is also very small.
+Even though Mini Cookies is super small, it's built to make using [`document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)'s API easy!
 
-How? It smartly assists in contructing `document.cookie` attributes and can store the state of cookies set with Mini Cookies in local storage so you can access your cookie's state later—including attributes!
+### How?
+
+1. It smartly assists in contructing `document.cookie` attributes.
+2. And, it store's your `document.cookie` state so you can access/review your `document.cookie`'s state later—including attributes!
 
 The ability to smartly assist in constructing cookie attributes and store cookie state is awesome because `document.cookie` cookies can't be updated (only overwritten) and `document.cookie` cookies attributes can't be read (only written). With Mini Cookies, `document.cookie` state is accessible and writing the `document.cookie` you want is easy.
 
@@ -30,7 +34,8 @@ More over, you don't need to use Mini Cookie state! It is opt-in only. This is g
 ## Install
 
 ```bash
-npm install mini-cookies
+npm install mini-cookies --save
+# pnpm/yarn add mini-cookies --save
 ```
 
 ---
@@ -134,6 +139,7 @@ Clears mini-cookie state.
 
 ## Roadmap
 
+- Build out more cookie attribute support
 - Provide cookie attribute examples
 - Provide code sandbox environments
 
@@ -141,7 +147,7 @@ Clears mini-cookie state.
 
 ## Feature Requests
 
-Yes! I'm happy to add more utility to this lil' `fn` that just makes cookies in the console fun!
+Yes! I'm happy to add more utility to Mini Cookies!
 
 ---
 
