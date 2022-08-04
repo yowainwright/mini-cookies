@@ -32,7 +32,8 @@ More over, you don't need to use Mini Cookie state! It is opt-in only. This is g
 ## Install
 
 ```bash
-npm install mini-cookies
+npm install mini-cookies --save
+# pnpm/yarn add mini-cookies --save
 ```
 
 ## Use
@@ -83,11 +84,11 @@ cookies.remove('mini'); // no cookie!!! 😫 + logs
 
 ---
 
-#### `miniCookies({options}).set(<key>, <value>), {attributes})`
+### `miniCookies({options}).set(<key>, <value>), {attributes})`
 
 Set a cookie.
 
-##### params
+#### params
 
 - `<key>`: a string
 - `<value>`: a string
@@ -95,29 +96,35 @@ Set a cookie.
 
 ---
 
-#### `miniCookies({options}).get(<key>)`
+### `miniCookies({options}).get(<key>)`
 
 Gets a cookie by string.
 
-##### param
+#### param
 
 - `<key>`: a string
 
 ---
 
-#### `miniCookies({options}).remove(<key>)`
+### `miniCookies({options}).remove(<key>)`
 
 Removes a cookie by string.
 
-##### param
+#### param
 
 - `<key>`: a string
 
 ---
 
-#### `miniCookies({options}).review()`
+### `miniCookies({options}).review()`
 
 Returns mini-cookie state.
+
+\***`hasState`** must be enabled for this to work!
+
+### `miniCookies({options}).clearState()`
+
+Clears mini-cookie state.
 
 \***`hasState`** must be enabled for this to work!
 
