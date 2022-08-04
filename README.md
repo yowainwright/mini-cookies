@@ -122,6 +122,8 @@ Returns mini-cookie state.
 
 \***`hasState`** must be enabled for this to work!
 
+---
+
 ### `miniCookies({options}).clearState()`
 
 Clears mini-cookie state.
