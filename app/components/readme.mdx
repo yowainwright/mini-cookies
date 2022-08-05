@@ -1,6 +1,12 @@
 ## Introduction
 
-Mini Cookies is a simple and minimalistic cookie management tool with zero dependencies.
+![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
+![GitHub branch checks state](https://img.shields.io/github/checks-status/yowainwright/mini-cookies/master)
+[![npm](https://img.shields.io/npm/v/mini-cookies)](https://www.npmjs.com/package/mini-cookies)
+[![unpkg](https://img.shields.io/badge/unpkg-link-blue.svg)](https://unpkg.com/mini-cookies@latest/dist/mini-cookies.umd.js)
+[![Github](https://badgen.net/badge/icon/github?icon=github&label&color=grey)](https://github.com/yowainwright/mini-cookies)
+
+A mini JS Document.cookie manager to help you write your cookies right! 🎯
 
 Use (or try) it in your \*browser's console right now!
 
@@ -22,12 +28,8 @@ Even though Mini Cookies is super small, it's built to make using [`document.coo
 
 ### How?
 
-1. It smartly assists in contructing `document.cookie` attributes.
-2. And, it store's your `document.cookie` state so you can access/review your `document.cookie`'s state later—including attributes!
-
-The ability to smartly assist in constructing cookie attributes and store cookie state is awesome because `document.cookie` cookies can't be updated (only overwritten) and `document.cookie` cookies attributes can't be read (only written). With Mini Cookies, `document.cookie` state is accessible and writing the `document.cookie` you want is easy.
-
-More over, you don't need to use Mini Cookie state! It is opt-in only. This is good for your app's maintainability. The recommended pattern is using Mini Cookies state management to get your `document.cookie`'s working how you want and then turning off Mini Cookies state management when your cookies are working how you want.
+1. It [smartly assists](#smartly-assist-constructing-cookies) in contructing `document.cookie` attributes.
+2. And, it store's your `document.cookie` [state](opt-in-cookie-state-management) so you can access/review your `document.cookie`'s state later—including attributes!
 
 ---
 
@@ -90,11 +92,11 @@ cookies.remove('mini'); // no cookie!!! 😫 + logs
 
 ---
 
-#### `miniCookies({options}).set(<key>, <value>), {attributes})`
+### `miniCookies({options}).set(<key>, <value>), {attributes})`
 
 Set a cookie.
 
-##### params
+#### params
 
 - `<key>`: a string
 - `<value>`: a string
@@ -102,27 +104,27 @@ Set a cookie.
 
 ---
 
-#### `miniCookies({options}).get(<key>)`
+### `miniCookies({options}).get(<key>)`
 
 Gets a cookie by string.
 
-##### param
+#### param
 
 - `<key>`: a string
 
 ---
 
-#### `miniCookies({options}).remove(<key>)`
+### `miniCookies({options}).remove(<key>)`
 
 Removes a cookie by string.
 
-##### param
+#### param
 
 - `<key>`: a string
 
 ---
 
-#### `miniCookies({options}).review()`
+### `miniCookies({options}).review()`
 
 Returns mini-cookie state.
 
@@ -130,18 +132,27 @@ Returns mini-cookie state.
 
 ---
 
-#### `miniCookies({options}).clearState()`
+### `miniCookies({options}).clearState()`
 Clears mini-cookie state.
 
 *hasState must be enabled for this to work!
 
 ---
 
+## Smartly Assist Constructing Cookies
+
+The ability to smartly assist in constructing cookie attributes and store cookie state is awesome because `document.cookie` cookies can't be updated (only overwritten) and `document.cookie` cookies attributes can't be read (only written). With Mini Cookies, `document.cookie` state is accessible and writing the `document.cookie` you want is easy. More to diagrams and such on this to come!
+
+## Opt-in Cookie State Management
+
+You don't need to use Mini Cookies state! It is opt-in only! This is good for your app's maintainability. The recommended pattern is using Mini Cookies state management to get your `document.cookie`'s working how you want and then turning off Mini Cookies State Management when your cookies are working how you want. More state diagrams and such to come!
+
 ## Roadmap
 
-- Build out more cookie attribute support
-- Provide cookie attribute examples
-- Provide code sandbox environments
+- [ ] Build out more cookie attribute support (next up)
+- [ ] Provide cookie attribute examples (very soon)
+- [ ] Provide code sandbox environments (very soon)
+- [ ] Provide more architectural documentation
 
 ---
 
