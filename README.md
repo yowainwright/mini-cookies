@@ -1,6 +1,6 @@
 # Mini Cookies 🍪
 
-Mini Cookies is a simple and minimalistic cookie management tool with zero dependencies.
+A mini JS Document.cookie manager to help you write your cookies right! 🎯
 
 Use (or try) it in your \*browser's console right now!
 
@@ -15,19 +15,17 @@ cookies.get('mini'); // cookies!
 
 ---
 
-[**🤔 Why**](#why-mini-cookies) | [**📦 Install**](#install) | [**⚙️ Usage**](#usage) | [**🧬 API**](#api) | [**🗺 Roadmap**](#roadmap) | [**🎖 Feature Requests**](#feature-requests)
-
----
-
 ## Why Mini Cookies?
 
-Mini Cookie's API is very small. It's size is also very small. Even though Mini Cookies is super small, it's built to make setting up `document.cookie`'s easy!
+Mini Cookie's API is very small. It's size is also very small.
+Even though Mini Cookies is super small, it's built to make using [`document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)'s API easy!
 
-How? It smartly assists in contructing `document.cookie` attributes and can store the state of cookies set with Mini Cookies in local storage so you can access your cookie's state later—including attributes!
+### How?
 
-The ability to smartly assist in constructing cookie attributes and store cookie state is awesome because `document.cookie` cookies can't be updated (only overwritten) and `document.cookie` cookies attributes can't be read (only written). With Mini Cookies, `document.cookie` state is accessible and writing the `document.cookie` you want is easy.
+1. It [smartly assists](#smartly-assist-constructing-cookies) in contructing `document.cookie` attributes.
+2. And, it store's your `document.cookie` [state](opt-in-cookie-state-management) so you can access/review your `document.cookie`'s state later—including attributes!
 
-More over, you don't need to use Mini Cookie state! It is opt-in only. This is good for your app's maintainability. The recommended pattern is using Mini Cookies state management to get your `document.cookie`'s working how you want and then turning off Mini Cookies state management when your cookies are working how you want.
+---
 
 ## Install
 
@@ -35,6 +33,8 @@ More over, you don't need to use Mini Cookie state! It is opt-in only. This is g
 npm install mini-cookies --save
 # pnpm/yarn add mini-cookies --save
 ```
+
+---
 
 ## Use
 
@@ -72,6 +72,8 @@ cookies.get('mini'); // 'cookies!!!' + logs
 cookies.review(); // mini-cookies-🍪: { mini: { value: 'cookies!!!' } }
 cookies.remove('mini'); // no cookie!!! 😫 + logs
 ```
+
+---
 
 ## API
 
@@ -125,18 +127,33 @@ Returns mini-cookie state.
 ---
 
 ### `miniCookies({options}).clearState()`
-
 Clears mini-cookie state.
 
-\***`hasState`** must be enabled for this to work!
+*hasState must be enabled for this to work!
 
 ---
 
+## Smartly Assist Constructing Cookies
+
+The ability to smartly assist in constructing cookie attributes and store cookie state is awesome because `document.cookie` cookies can't be updated (only overwritten) and `document.cookie` cookies attributes can't be read (only written). With Mini Cookies, `document.cookie` state is accessible and writing the `document.cookie` you want is easy. More to diagrams and such on this to come!
+
+## Opt-in Cookie State Management
+
+You don't need to use Mini Cookies state! It is opt-in only! This is good for your app's maintainability. The recommended pattern is using Mini Cookies state management to get your `document.cookie`'s working how you want and then turning off Mini Cookies State Management when your cookies are working how you want. More state diagrams and such to come!
+
 ## Roadmap
 
-- Provide attribute examples
-- Get website up
+- [ ] Build out more cookie attribute support (next up)
+- [ ] Provide cookie attribute examples (very soon)
+- [ ] Provide code sandbox environments (very soon)
+- [ ] Provide more architectural documentation
+
+---
 
 ## Feature Requests
 
-Yes! I'm happy to add more utility to this lil' `fn` that just makes cookies in the console fun!
+Yes! I'm happy to add more utility to Mini Cookies!
+
+---
+
+Made by [@yowainwright](https://github.com/yowainwright), MIT 2022
