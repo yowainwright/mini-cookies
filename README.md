@@ -1,10 +1,10 @@
 # Mini Cookies 🍪
 
 ![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
-![GitHub branch checks state](https://img.shields.io/github/checks-status/yowainwright/mini-cookies/master)
+![ci](https://github.com/yowainwright/mini-cookies/actions/workflows/ci.yml/badge.svg)
 [![npm](https://img.shields.io/npm/v/mini-cookies)](https://www.npmjs.com/package/mini-cookies)
 [![unpkg](https://img.shields.io/badge/unpkg-link-blue.svg)](https://unpkg.com/mini-cookies@latest/dist/mini-cookies.umd.js)
-[![Github](https://badgen.net/badge/icon/github?icon=github&label&color=grey)](https://github.com/yowainwright/mini-cookies)
+[![Github](https://badgen.net/badge/icon/github?icon=github&label&color=black)](https://github.com/yowainwright/mini-cookies)
 
 A mini JS Document.cookie manager to help you write your cookies right! 🎯
 
