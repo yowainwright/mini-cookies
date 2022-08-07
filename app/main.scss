@@ -36,17 +36,21 @@ h5 {
 .mc {
   &__h1,
   &__caption {
-    font-family: 'Press Start 2P';
+    font-family: 'Bungee';
   }
 
   &__h1 {
-    font-size: 2rem;
+    font-size: 3.5rem;
     margin: 0;
     padding: 1rem 0 0;
     text-align: center;
+   text-shadow: 0px 0px 10px rgba(221, 199, 221, 0.6);
+    background: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
     @media(min-width: 50rem) {
-      font-size: 4rem;
+      font-size: 5rem;
       padding: 2rem 0 0;
     }
   }
