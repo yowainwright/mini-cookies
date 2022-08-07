@@ -1,3 +1,5 @@
+![mini-cookies](https://user-images.githubusercontent.com/1074042/183312781-79fe7561-5c45-4010-ac2c-14dbf3dbe423.svg)
+
 # Mini Cookies 🍪
 
 ![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
