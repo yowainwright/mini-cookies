@@ -1,9 +1,15 @@
 import {
-  generateRandomNumber,
   setCookieAttributes,
   setCookieList,
 } from "./utils";
 import { CookieAttributes, CookieFactory, Options, State } from "./types";
+
+const hasStateOption = () => ({
+            ['mini-cookies']: {
+              note: 'If trying to use mini-cookie state, the hasState option must be set to true 👌',
+              docs: 'https://github.com/yowainwright/mini-cookies#minicookiesoptions',
+            },
+          });
 
 /**
  * Mini Cookies 🍪
@@ -14,7 +20,7 @@ import { CookieAttributes, CookieFactory, Options, State } from "./types";
 export default function miniCookies({
   debug = false,
   hasState = false,
-  id = `mini-cookies-${generateRandomNumber(8)}`,
+  id = 'mini-cookies-key',
 }: Options = {}): CookieFactory {
   return {
     hasState,
@@ -34,10 +40,19 @@ export default function miniCookies({
       }
     },
 
+    key() {
+      if (!this.get(this.id)) this.set(this.id, 'true');
+      return this.get(this.id) as string;
+    },
+
     // updates mini-cookie temp state
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
-      if (!this.hasState) return this;
-      const currentStorage = localStorage.getItem(this.id);
+      if (!this.hasState) {
+        if (this.isDebugging) console.info(hasStateOption());
+        return this;
+      }
+
+      const currentStorage = localStorage.getItem(this.key());
       const currentState = (
         currentStorage ? JSON.parse(currentStorage) : {}
       ) as State;
@@ -60,26 +75,22 @@ export default function miniCookies({
 
     clearState() {
       if (!this.hasState) return this;
-      localStorage.removeItem(this.id);
+      localStorage.removeItem(this.key());
+      this.remove('mini-cookies-key');
       return this;
     },
 
     // returns log of state
     review() {
       if (this.hasState) {
-        const currentStorage = localStorage.getItem(this.id);
+        const currentStorage = localStorage.getItem(this.key());
         const currentState = currentStorage ? JSON.parse(currentStorage) : {};
         if (this.isDebugging)
           console.info({
-            [`mini-cookies`]: currentState,
+            ['mini-cookies']: currentState,
           });
         return currentState;
-      } else {
-        if (this.isDebugging)
-          console.info({
-            [`mini-cookies`]: `Mini cookie instance ${this.id} is not tracking state 👌`,
-          });
-      }
+      } else if (this.isDebugging) console.info(hasStateOption());
     },
 
     // sets a cookie with attributes

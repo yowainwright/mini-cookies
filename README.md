@@ -91,6 +91,21 @@ cookies.remove('mini'); // no cookie!!! 😫 + logs
 
 - `{hasState: boolean}`: Whether or not to enable Mini Cookie state management.
 - `{debug: boolean}`: Whether or not to enable debugging.
+- \*`{id: string}`: The unique identifier for each mini-cookie instance.
+
+---
+
+##### \* `id`: unique identifier for each mini-cookie instance
+
+The unique identifier is important to consider when considering mini-cookie state management. It provides a way to identify unique mini-cookie instances. **If** you're dealing with a scenerio where you have multiple mini-cookie instances, insuring you have a unique `id` for your mini-cookie instance is required for accurate mini-cookie state management.
+
+---
+
+| Option | Type | Default | Description |
+| :------: | :----: | :-------: | :-----------: |
+| `id` | `string` | `'mini-cookies-key'` | The unique identifier for each mini-cookie instance. |
+| `hasState` | `boolean` | `false` | Whether or not to enable Mini Cookie state management. |
+| `debug` | `boolean` | `false` | Whether or not to enable debugging. |
 
 ---
 
