@@ -1,18 +1,6 @@
 import { CookieAttributes, CookieDictionary } from "./types";
 
 /**
- * generateRandomNumber
- * @description generates a random number with the length of the number provided
- * @param {number} number
- * @returns {string}
- */
-export function generateRandomNumber(n: number): string {
-  return Array.from({ length: n })
-    .map((_) => (Math.random() * 10) | 0)
-    .join("");
-}
-
-/**
  * setCookieAttributes
  * @description a cookie attribute manager
  * @param {object} attrs cookie attributes
