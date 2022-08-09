@@ -50,6 +50,7 @@ export type CookieFactory = {
   get: (name: string) => string | void;
   updateState: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory;
   clearState: () => CookieFactory;
+  key: () => string;
   review: () => CookieDictionary;
   set: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory
   remove: (name: string) => CookieFactory
