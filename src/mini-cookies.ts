@@ -40,19 +40,13 @@ export default function miniCookies({
       }
     },
 
-    key() {
-      if (!this.get(this.id)) this.set(this.id, 'true');
-      return this.get(this.id) as string;
-    },
-
     // updates mini-cookie temp state
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
       if (!this.hasState) {
         if (this.isDebugging) console.info(hasStateOption());
         return this;
       }
-
-      const currentStorage = localStorage.getItem(this.key());
+      const currentStorage = localStorage.getItem(this.id);
       const currentState = (
         currentStorage ? JSON.parse(currentStorage) : {}
       ) as State;
@@ -75,15 +69,15 @@ export default function miniCookies({
 
     clearState() {
       if (!this.hasState) return this;
-      localStorage.removeItem(this.key());
-      this.remove('mini-cookies-key');
+      localStorage.removeItem(this.id);
+      this.remove(this.id);
       return this;
     },
 
     // returns log of state
     review() {
       if (this.hasState) {
-        const currentStorage = localStorage.getItem(this.key());
+        const currentStorage = localStorage.getItem(this.id);
         const currentState = currentStorage ? JSON.parse(currentStorage) : {};
         if (this.isDebugging)
           console.info({
