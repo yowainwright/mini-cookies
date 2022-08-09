@@ -9,11 +9,11 @@ export function Header() {
 			<p className="mc__desc mc__desc--center">
 				A mini JS Document.cookie manager to help you write your cookies right! <span>🎯</span>
 			</p>
-			<p className="mc__desc mc__desc--center">
+			<div className="mc__desc mc__desc--center">
 				<MDXProvider>
 					<Badges />
 				</MDXProvider>
-			</p>
+			</div>
 		</header>
 	)
 }

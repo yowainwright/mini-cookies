@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { DispatchOptions } from '../types';
 import { lettersOnly } from '../utils'
 import { Dispatch, GlobalState } from './../App'
 import { Demo } from './Demo';
@@ -22,14 +23,14 @@ const initialState = {
 export function Form() {
 	const cookies = useContext(GlobalState)
 	console.log({ cookies });
-	const dispatch = useContext(Dispatch)
+	const dispatch = useContext(Dispatch) as React.Dispatch<DispatchOptions>
 	const [state, setState] = useState(initialState)
 	const { getValues, handleSubmit, register, reset, setValue } = useForm({
 		mode: 'onTouched',
 		defaultValues,
 	})
 
-	const hasFivePlusCookies = Object.keys(cookies)?.length >= 4;
+	const hasFivePlusCookies = Object.keys(cookies as Record<string, unknown>)?.length >= 4;
 
 	function onSubmit() {
 		const { name, value, isValid } = state
@@ -43,7 +44,7 @@ export function Form() {
 	function handleFormUpdate() {
 		const { name, value } = getValues()
 		if (name !== state.name || value !== state.value) {
-			const isValid = name.length && value.length
+			const isValid = name.length > 0 && value.length > 0
 			setState({ name, value, isValid })
 		}
 	}

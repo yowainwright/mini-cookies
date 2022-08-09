@@ -18,8 +18,8 @@ export function reducer(state, { payload: { name, value }, type }) {
   }
 }
 
-export const Dispatch = createContext();
-export const GlobalState = createContext()
+export const Dispatch = createContext({});
+export const GlobalState = createContext({})
 
 export default function App() {
 	const initialState = cookies.review();

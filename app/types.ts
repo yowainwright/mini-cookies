@@ -10,3 +10,10 @@ export type Action = {
 export type AppProps = {
 	cookies: Record<string, any>
 }
+
+export interface DispatchOptions {
+	type: string;
+	payload?: {
+		[key: string]: string;
+	}
+}
