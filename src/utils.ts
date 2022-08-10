@@ -1,6 +1,16 @@
 import { CookieAttributes, CookieDictionary } from "./types";
 
 /**
+ * @todo isStrictPath
+ * - unassign domain
+ * - set path to "/"
+ * - set "__Host-"
+ */
+
+// let domain be assigned by browser unless specified
+const secureAttributes = ["secure", "httponly", "__Secure-", "samesite"];
+
+/**
  * setCookieAttributes
  * @description a cookie attribute manager
  * @param {object} attrs cookie attributes
@@ -9,15 +19,21 @@ import { CookieAttributes, CookieDictionary } from "./types";
 export function setCookieAttributes(attrs: CookieAttributes = {}): string {
   const items = Object.keys(attrs);
   if (!items.length) return "";
+  // set secure attributes
+  const isSecureProtocol = document.location.protocol === "https:";
+  const hasIsSecureAttr = items.find(item => item === "isSecure") && isSecureProtocol;
+  const updatedAttrs = hasIsSecureAttr ? items.concat(secureAttributes) : items;
+
   // prefer days over expires attribute
-  const filteredAttrs = items.every((attr) =>
+  const filteredAttrs = updatedAttrs.every((attr) =>
     ["days", "expires"].includes(attr)
   )
-    ? items.filter((attr) => attr !== "expires")
-    : items;
+    ? updatedAttrs.filter((attr) => attr !== "expires")
+    : updatedAttrs;
+
   // return attributes with booleans  and key value pairs
   return filteredAttrs.reduce((str, attr) => {
-    const isTruthyAttr = ["secure", "httponly", "__Secure-"].includes(attr);
+    const isTruthyAttr = secureAttributes.includes(attr);
     // return truthy attributes w/o values
     if (isTruthyAttr) str += `; ${attr}`;
     // return days helper as expires

@@ -31,13 +31,12 @@ export default function miniCookies({
     // returns a cookie value if available
     get(name: string): string | void {
       const cookies = this.setCookieList();
+      const value = cookies[name] ? decodeURIComponent(cookies[name]) : undefined;
       if (this.isDebugging)
         console.debug({
-          ['mini-cookies']: { name, value: cookies[name] },
+          ['mini-cookies']: { name, value },
         });
-      if (cookies[name]) {
-        return cookies[name];
-      }
+      if (value) return value;
     },
 
     // updates mini-cookie temp state
