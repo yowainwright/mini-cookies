@@ -160,10 +160,13 @@ Clears mini-cookie state.
 
 The ability to smartly assist in constructing cookie attributes and store cookie state is awesome because `document.cookie` cookies can't be updated (only overwritten) and `document.cookie` cookies attributes can't be read (only written). With Mini Cookies, `document.cookie` state is accessible and writing the `document.cookie` you want is easy. More to diagrams and such on this to come!
 
+---
+
 ## Opt-in Cookie State Management
 
 You don't need to use Mini Cookies state! It is opt-in only! This is good for your app's maintainability. The recommended pattern is using Mini Cookies state management to get your `document.cookie`'s working how you want and then turning off Mini Cookies State Management when your cookies are working how you want. More state diagrams and such to come!
 
+---
 ## Recipes
 
 Mini Cookies is built form ease of use. It provides ways to keep track of the Cookie attributes and the state of the Cookies you set. Furthermore, Cookie attributes can be confusing. Using simplified convenience attributes, **"smart attributes"**, making the right attribute decisions is just a bit easier.
