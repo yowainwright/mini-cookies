@@ -102,7 +102,7 @@ The unique identifier is important to consider when considering mini-cookie stat
 ---
 
 | Option | Type | Default | Description |
-| :------: | :----: | :-------: | :-----------: |
+| :------: | :----: | :-------: | :----------- |
 | `id` | `string` | `'mini-cookies-key'` | The unique identifier for each mini-cookie instance. |
 | `hasState` | `boolean` | `false` | Whether or not to enable Mini Cookie state management. |
 | `debug` | `boolean` | `false` | Whether or not to enable debugging. |
