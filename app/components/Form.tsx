@@ -66,7 +66,7 @@ export function Form() {
 			<form className="mc__form" onSubmit={handleSubmit(onSubmit)}>
 				{hasFivePlusCookies && (
 				<div className='mc__screen'>
-					<h2 className='mc__h2 mc__h2--default'>Remove a cookie to enable the form!</h2>
+					<h2 className='mc__h2 mc__h2--shadow'>Remove a cookie to enable the form!</h2>
 				</div>)}
 				<div className='mc__form-group'>
 					<input

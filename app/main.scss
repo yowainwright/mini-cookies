@@ -88,10 +88,10 @@ tr {
     margin: 0;
     padding: 1rem 0 0;
     text-align: center;
-   text-shadow: 0px 0px 10px rgba(221, 199, 221, 0.6);
+    text-shadow: 0px 0px 10px rgba(221, 199, 221, 0.6);
     background: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
     @media(min-width: 50rem) {
       font-size: 5rem;
@@ -105,6 +105,9 @@ tr {
     text-align: center;
     &--default {
       color: #000;
+    }
+    &--shadow {
+      text-shadow: 0 3px #000;
     }
   }
 
@@ -202,8 +205,8 @@ tr {
 
   &__demo {
     display: grid;
-    grid-gap: 2.6rem;
-    grid-template-columns: repeat(auto-fill, 9rem);
+    grid-gap: 2.9rem;
+    grid-template-columns: repeat(auto-fill, 8rem);
     padding: 1rem 0;
     position: relative;
   }
@@ -225,7 +228,7 @@ tr {
     height: 7rem;
     margin: 0;
     padding: .5rem;
-    width: 9rem;
+    width: 8rem;
     display: flex;
     align-items: center;
     justify-content: center;
