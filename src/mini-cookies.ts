@@ -4,12 +4,12 @@ import {
 } from "./utils";
 import { CookieAttributes, CookieFactory, Options, State } from "./types";
 
-const hasStateOption = () => ({
-            ['mini-cookies']: {
-              note: 'If trying to use mini-cookie state, the hasState option must be set to true 👌',
-              docs: 'https://github.com/yowainwright/mini-cookies#minicookiesoptions',
-            },
-          });
+const hasStateOption = {
+  ['mini-cookies']: {
+    note: 'If trying to use mini-cookie state, the hasState option must be set to true 👌',
+    docs: 'https://github.com/yowainwright/mini-cookies#minicookiesoptions',
+  },
+};
 
 /**
  * Mini Cookies 🍪
@@ -20,7 +20,7 @@ const hasStateOption = () => ({
 export default function miniCookies({
   debug = false,
   hasState = false,
-  id = 'mini-cookies-key',
+  id = 'mini-cookies-state',
 }: Options = {}): CookieFactory {
   return {
     hasState,
@@ -33,7 +33,7 @@ export default function miniCookies({
       const cookies = this.setCookieList();
       if (this.isDebugging)
         console.debug({
-          [`mini-cookies`]: { name, value: cookies[name] },
+          ['mini-cookies']: { name, value: cookies[name] },
         });
       if (cookies[name]) {
         return cookies[name];
@@ -43,7 +43,7 @@ export default function miniCookies({
     // updates mini-cookie temp state
     updateState(name: string, value: string, attrs: CookieAttributes = {}) {
       if (!this.hasState) {
-        if (this.isDebugging) console.info(hasStateOption());
+        if (this.isDebugging) console.info(hasStateOption);
         return this;
       }
       const currentStorage = localStorage.getItem(this.id);
@@ -84,7 +84,7 @@ export default function miniCookies({
             ['mini-cookies']: currentState,
           });
         return currentState;
-      } else if (this.isDebugging) console.info(hasStateOption());
+      } else if (this.isDebugging) console.info(hasStateOption);
     },
 
     // sets a cookie with attributes
