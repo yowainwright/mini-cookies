@@ -11,8 +11,9 @@ cookies.set('mini', 'cookies!');
 cookies.get('mini'); // cookies!
 ```
 
+<div class='mc__msg'>
 \*Evaling won't work on sites that don't allow the`unpkg` domain.
-
+</div>
 ---
 
 ## Why Mini Cookies?
@@ -77,6 +78,8 @@ cookies.remove('mini'); // no cookie!!! 😫 + logs
 
 ## API
 
+<div class="mc__unit">
+
 ### `miniCookies({options})`
 
 **`{options}`** an object argument of **Mini Cookies** options.
@@ -85,21 +88,28 @@ cookies.remove('mini'); // no cookie!!! 😫 + logs
 - `{debug: boolean}`: Whether or not to enable debugging.
 - `{id: string}`: The \***unique identifier** for each mini-cookie instance.
 
+</div>
+
 ---
+
+<div class='mc__msg'>
 
 ##### \*unique identifier
 
 The unique identifier is important to consider when considering mini-cookie state management. It provides a way to identify unique mini-cookie instances. **If** you're dealing with a scenerio where you have multiple mini-cookie instances, insuring you have a unique `id` for your mini-cookie instance is required for accurate mini-cookie state management.
 
+</div>
 ---
 
 | Option | Type | Default | Description |
-| - | :- | -: | :-: |
+| :-: | :-: | :-: | :- |
 | `id` | `string` | `'mini-cookies-key'` | The unique identifier for each mini-cookie instance. |
 | `hasState` | `boolean` | `false` | Whether or not to enable Mini Cookie state management. |
 | `debug` | `boolean` | `false` | Whether or not to enable debugging. |
 
 ---
+
+<div class="mc__unit">
 
 ### `miniCookies({options}).set(<key>, <value>), {attributes})`
 
@@ -111,7 +121,11 @@ Set a cookie.
 - `<value>`: a string
 - `{attributes}`: an object of cookie attributes.
 
+</div>
+
 ---
+
+<div class="mc__unit">
 
 ### `miniCookies({options}).get(<key>)`
 
@@ -121,7 +135,11 @@ Gets a cookie by string.
 
 - `<key>`: a string
 
+</div>
+
 ---
+
+<div class="mc__unit">
 
 ### `miniCookies({options}).remove(<key>)`
 
@@ -131,7 +149,11 @@ Removes a cookie by string.
 
 - `<key>`: a string
 
+</div>
+
 ---
+
+<div class="mc__unit">
 
 ### `miniCookies({options}).review()`
 
@@ -139,12 +161,18 @@ Returns mini-cookie state.
 
 \***`hasState`** must be enabled for this to work!
 
+</div>
+
 ---
+
+<div class="mc__unit">
 
 ### `miniCookies({options}).clearState()`
 Clears mini-cookie state.
 
 *hasState must be enabled for this to work!
+
+</div>
 
 ---
 

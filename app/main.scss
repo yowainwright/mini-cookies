@@ -29,9 +29,53 @@ li, p {
   margin: 1rem 0;
 }
 
+h3 {
+  & code {
+    font-size: 1.25rem;
+  }
+}
 h5 {
   font-size: 1.2rem;
 }
+
+table {
+  border-collapse: collapse;
+  display: block;
+  max-width: calc(100vw - 2rem);
+  overflow-x: scroll;
+
+  @media(min-width: 50rem) {
+    display: table;
+    max-width: 50rem;
+    overflow-x: auto;
+  }
+}
+
+td,
+th {
+  border: 1px solid #f2f2f2;
+}
+
+th {
+  background: #f3f2fd;
+  color: #282094;
+  font-family: sans-serif;
+  padding: 0.75rem 1rem;
+}
+
+td {
+  padding: 0.5rem 1rem 1.5rem;
+}
+
+tr {
+  &:nth-child(odd) {
+    tbody & {
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+
 
 .mc {
   &__h1,
@@ -219,6 +263,22 @@ h5 {
       & a {
         font-size: .8rem;
       }
+    }
+  }
+
+  &__msg {
+    background: #f3f2fd;
+    border-radius: .5rem;
+    margin: 1rem auto;
+    padding: 1rem 2rem;
+  }
+
+  &__unit {
+    border-left: 10px solid #f3f2fd;
+    padding: 0 0 1rem 1rem;
+
+    & + hr {
+      margin-top: 0;
     }
   }
 }
