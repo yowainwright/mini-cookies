@@ -176,20 +176,127 @@ Clears mini-cookie state.
 
 ---
 
-## Smartly Assist Constructing Cookies
+---
 
-The ability to smartly assist in constructing cookie attributes and store cookie state is awesome because `document.cookie` cookies can't be updated (only overwritten) and `document.cookie` cookies attributes can't be read (only written). With Mini Cookies, `document.cookie` state is accessible and writing the `document.cookie` you want is easy. More to diagrams and such on this to come!
+## Recipes
 
-## Opt-in Cookie State Management
+Mini Cookies is built form ease of use. It provides ways to keep track of the Cookie attributes and the state of the Cookies you set. Furthermore, Cookie attributes can be confusing. Using simplified convenience attributes, **"smart attributes"**, making the right attribute decisions is just a bit easier.
 
-You don't need to use Mini Cookies state! It is opt-in only! This is good for your app's maintainability. The recommended pattern is using Mini Cookies state management to get your `document.cookie`'s working how you want and then turning off Mini Cookies State Management when your cookies are working how you want. More state diagrams and such to come!
+### Smart attributes
+
+Mini Cookies provides smart attributes which are built to be intuitive to how we generally set cookies.
+
+---
+
+<div class="mc__unit">
+
+#### `days`
+
+> `days` creates an `expires` cookie attribute.
+
+By adding the `days` attribute, you can set the `expires` attribute to the number of days from now vs having to think about dates, etc.
+
+```typescript
+// set expires to 1 day useing `days`
+const cookies = miniCookies();
+cookies.set('mini', 'cookies!!!', { days: 1 });
+```
+
+If you want to explicitly set the `expires` attribute, you can still use `expires` attribute.
+
+```typescript
+// set expires manually
+const timeToAdd = 1000 * 60 * 60 * 24 * 7 * 4 * 6;
+const date = new Date();
+const expiryTime = `${parseInt(date.getTime())}${timeToAdd}`;
+date.setTime(expiryTime);
+const expires = date.toUTCString();
+const cookies = miniCookies();
+cookies.set('mini', 'cookies!!!', { expires });
+```
+
+</div>
+
+---
+
+<div class="mc__unit">
+
+#### `isSecure`
+
+> `isSecure` creates `secure`, `__Secure-`, and `samesite=strict` cookie attributes.
+
+```typescript
+// set isSecure
+const cookies = miniCookies();
+cookies.set('mini', 'cookies!!!', { isSecure: true });
+```
+
+If you want to explicitly set secure cookie attributes, you can still provide the following attributes.
+
+```typescript
+// set secure attributes manually
+cookies.set('mini', 'cookies!!!', { secure: true, __Secure__: true, samesite: 'strict' });
+```
+
+</div>
+
+---
+
+<div class="mc__unit">
+
+#### `isStrictSecure`
+
+> `isStrictSecure` creates `secure`, `__Secure-`, `__Host-`, `path=/` and `samesite=strict` cookie attributes.
+
+```typescript
+// set isStrictSecure
+const cookies = miniCookies();
+cookies.set('mini', 'cookies!!!', { isStrictSecure: true });
+```
+
+If you want to explicitly set secure cookie attributes, you can still provide the following attributes.
+
+```typescript
+// set secure attributes manually
+cookies.set('mini', 'cookies!!!', { secure: true, __Secure__: true, samesite: 'strict', __Host__: true, path: '/' });
+```
+
+</div>
+
+---
+
+<div class="mc__unit">
+
+### Opt-in State
+
+A huge benefit to Mini-Cookies is the ability to opt-in for state management. Although, `document.cookies` is only a string api, the fact that attributes are `write-only` and that there is often a misunderstanding that cookies can't be overwritten can be a problem.
+
+With Mini Cookies, you can opt-in for state management.
+
+```typescript
+const cookies = miniCookies({ hasState: true });
+cookies.set('mini', 'cookies!!!');
+cookies.review(); // { mini: 'cookies!!!' }
+```
+
+If you don't want opt-in state management, you can still use Mini Cookies without it.
+
+```typescript
+const cookies = miniCookies();
+cookies.set('mini', 'cookies!!!');
+cookies.review(); // <void>
+```
+
+</div>
+
+---
 
 ## Roadmap
 
-- Build out more cookie attribute support (next up)
-- Provide cookie attribute examples (very soon)
-- Provide code sandbox environments (very soon)
+- Provide code sandbox environments (next up)
 - Provide more architectural documentation
+- Provide camparisons table
+
 
 ---
 
