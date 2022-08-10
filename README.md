@@ -164,13 +164,15 @@ The ability to smartly assist in constructing cookie attributes and store cookie
 
 You don't need to use Mini Cookies state! It is opt-in only! This is good for your app's maintainability. The recommended pattern is using Mini Cookies state management to get your `document.cookie`'s working how you want and then turning off Mini Cookies State Management when your cookies are working how you want. More state diagrams and such to come!
 
-## Recipies
+## Recipes
 
 Mini Cookies is built form ease of use. It provides ways to keep track of the Cookie attributes and the state of the Cookies you set. Furthermore, Cookie attributes can be confusing. Using simplified convenience attributes, **"smart attributes"**, making the right attribute decisions is just a bit easier.
 
 ### Smart attributes
 
 Mini Cookies provides smart attributes which are built to be intuitive to how we generally set cookies.
+
+---
 
 #### `days`
 
@@ -197,6 +199,8 @@ const cookies = miniCookies();
 cookies.set('mini', 'cookies!!!', { expires });
 ```
 
+---
+
 #### `isSecure`
 
 > `isSecure` creates `secure`, `__Secure-`, and `samesite=strict` cookie attributes.
@@ -214,6 +218,8 @@ If you want to explicitly set secure cookie attributes, you can still provide th
 cookies.set('mini', 'cookies!!!', { secure: true, __Secure__: true, samesite: 'strict' });
 ```
 
+---
+
 #### `isStrictSecure`
 
 > `isStrictSecure` creates `secure`, `__Secure-`, `__Host-`, `path=/` and `samesite=strict` cookie attributes.
@@ -230,6 +236,8 @@ If you want to explicitly set secure cookie attributes, you can still provide th
 // set secure attributes manually
 cookies.set('mini', 'cookies!!!', { secure: true, __Secure__: true, samesite: 'strict', __Host__: true, path: '/' });
 ```
+
+---
 
 ### Opt-in State
 
@@ -250,6 +258,8 @@ const cookies = miniCookies();
 cookies.set('mini', 'cookies!!!');
 cookies.review(); // <void>
 ```
+
+---
 
 ## Roadmap
 
