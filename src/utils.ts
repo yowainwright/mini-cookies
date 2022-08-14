@@ -1,4 +1,4 @@
-import { CookieAttributes, CookieDictionary } from "./types";
+import { CookieAttributes, CookieDictionary, SetUpdatedState, State } from "./types";
 
 // let domain be assigned by browser unless specified
 const secureAttributes = ["secure", "__Secure-", "samesite"];
@@ -68,4 +68,25 @@ export function setCookieList(): CookieDictionary {
       }),
       {}
     );
+}
+
+export function setUpdatedState({ id, name, value, attrs }: SetUpdatedState) {
+  const currentStorage = localStorage.getItem(id);
+  const currentState = (
+    currentStorage ? JSON.parse(currentStorage) : {}
+  ) as State;
+  if (value) {
+    const updatedState = {
+      ...currentState,
+      [name]: {
+        name,
+        value,
+        ...(Object.keys(attrs).length ? { attrs } : {}),
+      },
+    };
+    localStorage.setItem(id, JSON.stringify(updatedState));
+  } else if (Object.keys(currentState).length) {
+    const { [name]: deleted, ...updatedState } = currentState;
+    localStorage.setItem(id, JSON.stringify(updatedState));
+  }
 }

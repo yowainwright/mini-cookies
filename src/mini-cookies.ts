@@ -1,6 +1,7 @@
 import {
   setCookieAttributes,
   setCookieList,
+  setUpdatedState
 } from "./utils";
 import { CookieAttributes, CookieFactory, Options, State } from "./types";
 
@@ -45,24 +46,7 @@ export default function miniCookies({
         if (this.isDebugging) console.info(hasStateOption);
         return this;
       }
-      const currentStorage = localStorage.getItem(this.id);
-      const currentState = (
-        currentStorage ? JSON.parse(currentStorage) : {}
-      ) as State;
-      if (value) {
-        const updatedState = {
-          ...currentState,
-          [name]: {
-            name,
-            value,
-            ...(Object.keys(attrs).length ? { attrs } : {}),
-          },
-        };
-        localStorage.setItem(this.id, JSON.stringify(updatedState));
-      } else if (Object.keys(currentState).length) {
-        const { [name]: deleted, ...updatedState } = currentState;
-        localStorage.setItem(this.id, JSON.stringify(updatedState));
-      }
+      setUpdatedState({ id: this.id, name, value, attrs });
       return this;
     },
 

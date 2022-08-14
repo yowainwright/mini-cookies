@@ -1,8 +1,8 @@
-export type CookieDictionary = {
+export interface CookieDictionary {
   [key: string]: string;
 };
 
-export type CookieAttributes = {
+export interface CookieAttributes {
   days?: number; // ex, 7
   domain?: string; // ex "example.com"
   expires?: Date; // ex, new Date(Date.now())
@@ -15,16 +15,16 @@ export type CookieAttributes = {
   ["__Secure-"]?: boolean;
 };
 
-export type Options = {
+export interface Options {
   debug?: boolean;
   hasState?: boolean;
   id?: string;
 };
 
-export type State = {
+export interface State {
   [x: string]:
-    | Record<string, Record<string, string> | undefined>
-    | { attrs?: CookieAttributes | undefined; value: string };
+  | Record<string, Record<string, string> | undefined>
+  | { attrs?: CookieAttributes | undefined; value: string };
 };
 
 export type UpdateState = (
@@ -33,7 +33,14 @@ export type UpdateState = (
   attrs: CookieAttributes
 ) => void;
 
-export type MiniCookiesFactory = {
+export interface SetUpdatedState {
+  id: string;
+  name: string;
+  value: string;
+  attrs: CookieAttributes;
+}
+
+export interface MiniCookiesFactory {
   hasState: boolean;
   isDebugging: boolean;
   get: (name: string) => string | undefined;
@@ -42,7 +49,7 @@ export type MiniCookiesFactory = {
   updateState: UpdateState;
 };
 
-export type CookieFactory = {
+export interface CookieFactory {
   hasState: boolean;
   isDebugging: boolean;
   id: string;

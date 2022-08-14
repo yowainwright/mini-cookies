@@ -1,6 +1,6 @@
 import { test, it, expect } from "vitest";
-import { setCookieAttributes } from "../utils";
-import miniCookies from "../mini-cookies";
+import { setCookieAttributes } from "../src/utils";
+import miniCookies from "../src/mini-cookies";
 
 test("MiniCookies", () => {
   it("miniCookies is defined", () => expect(miniCookies).toBeDefined());
@@ -37,7 +37,7 @@ test("MiniCookies state", () => {
   });
 
   it('clears state', () => {
-     const cookies = miniCookies({ hasState: true });
+    const cookies = miniCookies({ hasState: true });
     cookies.set('flower', 'power');
     expect(cookies.review()).toEqual({ flower: { name: 'flower', value: 'power' } });
     cookies.clearState();
