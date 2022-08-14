@@ -3,7 +3,7 @@ import {
   setCookieList,
   setUpdatedState
 } from "./utils";
-import { CookieAttributes, CookieFactory, Options, State } from "./types";
+import { CookieAttributes, CookieFactory, Options } from "./types";
 
 const hasStateOption = {
   ['mini-cookies']: {
