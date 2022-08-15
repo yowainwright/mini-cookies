@@ -265,9 +265,20 @@ cookies.review(); // <void>
 
 ---
 
+## Sandbox Environments
+
+**Note:** cookies are not supported in sandbox environments. Within the StackBlitz sandbox, click the "Open in New Tab" button to view mini-cookies in action! See the image below for visual UI reference.
+
+---
+
+![mini-cooies-stackblitz](https://user-images.githubusercontent.com/1074042/184686402-a880f134-5aaf-4b58-939d-42c4bbc38450.gif)
+
+---
+
+- [mini-cookies basic demo](https://stackblitz.com/edit/mini-cookies?file=index.js)
+
 ## Roadmap
 
-- [ ] Provide code sandbox environments (next up)
 - [ ] Provide more architectural documentation
 - [ ] Provide camparisons table
 
