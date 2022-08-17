@@ -276,6 +276,15 @@ cookies.review(); // <void>
 ---
 
 - [mini-cookies basic demo](https://stackblitz.com/edit/mini-cookies?file=index.js)
+- [mini-cookies multi-state instance demo](https://stackblitz.com/edit/mini-cookies-multi-state-instances?file=index.js)
+
+
+## Comparisons
+
+| name | file size | key features |
+| :--- | --- | :--- |
+| mini-cookies | ![size](https://img.shields.io/bundlephobia/minzip/mini-cookies) | state management, smart attributes |
+| js-cookie | ![size](https://img.shields.io/bundlephobia/minzip/js-cookie/3) | well known, simple api |
 
 ## Roadmap
 
