@@ -188,7 +188,7 @@ cookies.review(); // <void>
 `,p.exports.jsx(t.h2,{id:"sandbox-environments",children:"Sandbox Environments"}),`
 `,p.exports.jsxs(t.p,{children:[p.exports.jsx(t.strong,{children:"Note:"}),' cookies are not supported in sandbox environments. Within the StackBlitz sandbox, click the "Open in New Tab" button to view mini-cookies in action! See the image below for visual UI reference.']}),`
 `,p.exports.jsx(t.hr,{}),`
-`,p.exports.jsx(t.p,{children:p.exports.jsx(t.img,{src:"https://user-images.githubusercontent.com/1074042/184686402-a880f134-5aaf-4b58-939d-42c4bbc38450.gif",alt:"mini-cooies-stackblitz"})}),`
+`,p.exports.jsx("div",{class:"mc__image",children:p.exports.jsx(t.p,{children:p.exports.jsx(t.img,{src:"https://user-images.githubusercontent.com/1074042/184686402-a880f134-5aaf-4b58-939d-42c4bbc38450.gif",alt:"mini-cooies-stackblitz"})})}),`
 `,p.exports.jsx(t.hr,{}),`
 `,p.exports.jsxs(t.ul,{children:[`
 `,p.exports.jsx(t.li,{children:p.exports.jsx(t.a,{href:"https://stackblitz.com/edit/mini-cookies?file=index.js",children:"mini-cookies basic demo"})}),`

@@ -290,6 +290,11 @@ blockquote {
       margin-top: 0;
     }
   }
+
+  &__image img {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 pre[class*='language-'],
