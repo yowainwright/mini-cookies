@@ -278,6 +278,8 @@ cookies.review(); // <void>
 - [mini-cookies basic demo](https://stackblitz.com/edit/mini-cookies?file=index.js)
 - [mini-cookies multi-state instance demo](https://stackblitz.com/edit/mini-cookies-multi-state-instances?file=index.js)
 
+[![Mini Cookies—A document.cookie manager - Watch Video](https://cdn.loom.com/sessions/thumbnails/a77bdd325bcf4c399c93d7297988d42b-with-play.gif)](https://www.loom.com/share/a77bdd325bcf4c399c93d7297988d42b)
+
 ---
 ## Comparisons
 
