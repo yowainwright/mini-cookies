@@ -3,14 +3,16 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import { uglify } from "rollup-plugin-uglify";
 
-import {
+import json from "./package.json" assert { type: 'json' };
+
+const {
   author,
   description,
   homepage,
   license,
   name,
   version,
-} from "./package.json";
+} = json;
 
 const banner = `/**
   @preserve ${name} - ${description}
@@ -24,11 +26,7 @@ const plugins = [
   resolve(),
   commonjs(),
   typescript({
-    tsconfig: false,
-    lib: ["esnext", "dom"],
-    target: "esnext",
-    moduleResolution: "node",
-    resolveJsonModule: true,
+    tsconfig: "tsconfig.rollup.json",
   }),
   uglify({
     output: {
