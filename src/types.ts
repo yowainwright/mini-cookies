@@ -27,27 +27,12 @@ export interface State {
   | { attrs?: CookieAttributes | undefined; value: string };
 };
 
-export type UpdateState = (
-  name: string,
-  value: string,
-  attrs: CookieAttributes
-) => void;
-
 export interface SetUpdatedState {
   id: string;
   name: string;
   value: string;
   attrs: CookieAttributes;
 }
-
-export interface MiniCookiesFactory {
-  hasState: boolean;
-  isDebugging: boolean;
-  get: (name: string) => string | undefined;
-  set: (name: string, value: string) => void;
-  remove: (name: string) => void;
-  updateState: UpdateState;
-};
 
 export interface CookieFactory {
   hasState: boolean;
