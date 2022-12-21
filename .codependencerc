@@ -1,0 +1,26 @@
+{
+  "codependencies": [
+    "@commitlint/cli",
+    "@commitlint/config-conventional",
+    "@rollup/plugin-commonjs",
+    "@rollup/plugin-node-resolve",
+    "@rollup/plugin-typescript",
+    "@types/node",
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser",
+    "codependence",
+    "eslint",
+    "eslint-config-prettier",
+    "husky",
+    "lint-staged",
+    "path-exists-cli",
+    "release-it",
+    "rimraf",
+    "rollup",
+    "rollup-plugin-uglify",
+    "tslib",
+    "typescript",
+    "vite",
+    "vitest"
+  ]
+}
