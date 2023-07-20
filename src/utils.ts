@@ -86,6 +86,7 @@ export function setUpdatedState({ id, name, value, attrs }: SetUpdatedState) {
     };
     localStorage.setItem(id, JSON.stringify(updatedState));
   } else if (Object.keys(currentState).length) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { [name]: deleted, ...updatedState } = currentState;
     localStorage.setItem(id, JSON.stringify(updatedState));
   }
