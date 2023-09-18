@@ -22,7 +22,6 @@ const initialState = {
 
 export function Form() {
 	const cookies = useContext(GlobalState)
-	console.log({ cookies });
 	const dispatch = useContext(Dispatch) as React.Dispatch<DispatchOptions>
 	const [state, setState] = useState(initialState)
 	const { getValues, handleSubmit, register, reset, setValue } = useForm({
