@@ -1,8 +1,8 @@
-import { test, it, expect } from "vitest";
+import { describe, it, expect } from "vitest";
 import { setCookieAttributes } from "../src/utils";
 import miniCookies from "../src/mini-cookies";
 
-test("MiniCookies", () => {
+describe("MiniCookies", () => {
   it("miniCookies is defined", () => expect(miniCookies).toBeDefined());
 
   it("gets cookies", () => {
@@ -20,7 +20,7 @@ test("MiniCookies", () => {
   });
 });
 
-test("attributes", () => {
+describe("attributes", () => {
   it("expires attr prefers days", () => {
     const today = new Date();
     const expires = new Date(today.setDate(today.getDate() + 7));
@@ -29,11 +29,12 @@ test("attributes", () => {
   });
 });
 
-test("MiniCookies state", () => {
+describe("MiniCookies state", () => {
   it('updates state', () => {
     const cookies = miniCookies({ hasState: true });
     cookies.set('biz', 'buzz');
     expect(cookies.review()).toEqual({ biz: { name: 'biz', value: 'buzz' } });
+    cookies.clearState();
   });
 
   it('clears state', () => {

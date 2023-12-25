@@ -17,7 +17,7 @@
     "prepare": "husky install",
     "prepublishOnly": "pnpm test && pnpm build",
     "release": "release-it",
-    "test": "vitest run",
+    "test": "vitest run --environment jsdom",
     "transpile": "tsc && rollup --config rollup.config.ts --configPlugin typescript",
     "typecheck": "tsc --noEmit",
     "update": "codependence --update"
@@ -35,6 +35,7 @@
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "husky": "^8.0.3",
+    "jsdom": "^23.0.1",
     "lint-staged": "15.2.0",
     "path-exists-cli": "^2.0.0",
     "release-it": "17.0.1",
