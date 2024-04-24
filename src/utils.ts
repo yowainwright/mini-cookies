@@ -1,4 +1,9 @@
-import { CookieAttributes, CookieDictionary, SetUpdatedState, State } from "./types";
+import {
+  CookieAttributes,
+  CookieDictionary,
+  SetUpdatedState,
+  State,
+} from "./types";
 
 // let domain be assigned by browser unless specified
 const secureAttributes = ["secure", "__Secure-", "samesite"];
@@ -15,20 +20,24 @@ export function setCookieAttributes(attrs: CookieAttributes = {}): string {
   if (!items.length) return "";
   // set secure attributes
   const isSecureProtocol = document.location.protocol === "https:";
-  const hasIsSecureAttr = items.find(item => item === "isSecure") && isSecureProtocol;
-  const hasIsStrict = items.find(item => item === "isStrictSecure") && isSecureProtocol;
+  const hasIsSecureAttr =
+    items.find((item) => item === "isSecure") && isSecureProtocol;
+  const hasIsStrict =
+    items.find((item) => item === "isStrictSecure") && isSecureProtocol;
   let updatedAttrs = items;
   if (hasIsStrict) {
     // merge secure attributes
     // remove domain if added
-    updatedAttrs = items.concat(secureAttributes, strictPathAttributes).filter(item => item !== 'domain');
+    updatedAttrs = items
+      .concat(secureAttributes, strictPathAttributes)
+      .filter((item) => item !== "domain");
   } else if (hasIsSecureAttr) {
     updatedAttrs = items.concat(secureAttributes);
   }
 
   // prefer days over expires attribute
   const filteredAttrs = updatedAttrs.every((attr) =>
-    ["days", "expires"].includes(attr)
+    ["days", "expires"].includes(attr),
   )
     ? updatedAttrs.filter((attr) => attr !== "expires")
     : updatedAttrs;
@@ -39,12 +48,12 @@ export function setCookieAttributes(attrs: CookieAttributes = {}): string {
     // return truthy attributes w/o values
     if (isTruthyAttr) str += `; ${attr}`;
     // secure specific values
-    if (attr === 'sameSite' && hasIsSecureAttr) str += `; ${attr}=strict`;
-    if (attr === 'path' && hasIsStrict) str += `; ${attr}=/`;
+    if (attr === "sameSite" && hasIsSecureAttr) str += `; ${attr}=strict`;
+    if (attr === "path" && hasIsStrict) str += `; ${attr}=/`;
     // return days helper as expires
     else if (attr === "days")
       str += `; expires=${new Date(
-        Date.now() + (attrs[attr] as number) || 0 * 864e5
+        Date.now() + (attrs[attr] as number) || 0 * 864e5,
       ).toUTCString()};`;
     // return all other key value string pairs
     else str += `; ${attr}=${attrs[attr as keyof CookieAttributes]}`;
@@ -66,7 +75,7 @@ export function setCookieList(): CookieDictionary {
         ...list,
         [key.trim()]: decodeURIComponent(value),
       }),
-      {}
+      {},
     );
 }
 

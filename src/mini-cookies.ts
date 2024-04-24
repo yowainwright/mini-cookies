@@ -1,14 +1,10 @@
-import {
-  setCookieAttributes,
-  setCookieList,
-  setUpdatedState
-} from "./utils";
+import { setCookieAttributes, setCookieList, setUpdatedState } from "./utils";
 import { CookieAttributes, CookieFactory, Options } from "./types";
 
 const hasStateOption = {
-  ['mini-cookies']: {
-    note: 'If trying to use mini-cookie state, the hasState option must be set to true 👌',
-    docs: 'https://github.com/yowainwright/mini-cookies#minicookiesoptions',
+  ["mini-cookies"]: {
+    note: "If trying to use mini-cookie state, the hasState option must be set to true 👌",
+    docs: "https://github.com/yowainwright/mini-cookies#minicookiesoptions",
   },
 };
 
@@ -21,7 +17,7 @@ const hasStateOption = {
 export default function miniCookies({
   debug = false,
   hasState = false,
-  id = 'mini-cookies-state',
+  id = "mini-cookies-state",
 }: Options = {}): CookieFactory {
   return {
     hasState,
@@ -32,10 +28,12 @@ export default function miniCookies({
     // returns a cookie value if available
     get(name: string): string | void {
       const cookies = this.setCookieList();
-      const value = cookies[name] ? decodeURIComponent(cookies[name]) : undefined;
+      const value = cookies[name]
+        ? decodeURIComponent(cookies[name])
+        : undefined;
       if (this.isDebugging)
         console.debug({
-          ['mini-cookies']: { name, value },
+          ["mini-cookies"]: { name, value },
         });
       if (value) return value;
     },
@@ -64,7 +62,7 @@ export default function miniCookies({
         const currentState = currentStorage ? JSON.parse(currentStorage) : {};
         if (this.isDebugging)
           console.info({
-            ['mini-cookies']: currentState,
+            ["mini-cookies"]: currentState,
           });
         return currentState;
       } else if (this.isDebugging) console.info(hasStateOption);
