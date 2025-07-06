@@ -1,7 +1,4 @@
-import {
-  CookieAttributes,
-  CookieDictionary,
-} from "./types";
+import { CookieAttributes, CookieDictionary } from "./types";
 
 // let domain be assigned by browser unless specified
 const secureAttributes = ["secure", "__Secure-", "samesite"];
@@ -76,4 +73,3 @@ export function setCookieList(): CookieDictionary {
       {},
     );
 }
-

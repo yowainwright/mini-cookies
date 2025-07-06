@@ -13,10 +13,16 @@ A mini JS Document.cookie manager to help you write your cookies right! 🎯
 Use (or try) it in your \*browser's console right now!
 
 ```js
-eval(await (await fetch('https://unpkg.com/mini-cookies@latest/dist/mini-cookies.umd.js')).text())
+eval(
+  await (
+    await fetch(
+      "https://unpkg.com/mini-cookies@latest/dist/mini-cookies.umd.js",
+    )
+  ).text(),
+);
 const cookies = miniCookies();
-cookies.set('mini', 'cookies!');
-cookies.get('mini'); // cookies!
+cookies.set("mini", "cookies!");
+cookies.get("mini"); // cookies!
 ```
 
 \*Evaling won't work on sites that don't allow the`unpkg` domain.
@@ -49,36 +55,36 @@ npm install mini-cookies --save
 Basic usage
 
 ```typescript
-import miniCookies from 'mini-cookies';
+import miniCookies from "mini-cookies";
 
 const cookies = miniCookies();
-cookies.set('mini', 'cookies!!!');
-cookies.get('mini'); // 'cookies!!!'
-cookies.remove('mini'); // no cookie!!! 😫
+cookies.set("mini", "cookies!!!");
+cookies.get("mini"); // 'cookies!!!'
+cookies.remove("mini"); // no cookie!!! 😫
 ```
 
 With Mini Cookie state management
 
 ```typescript
-import miniCookies from 'mini-cookies';
+import miniCookies from "mini-cookies";
 
 const cookies = miniCookies({ hasState: true });
-cookies.set('mini', 'cookies!!!');
-cookies.get('mini'); // 'cookies!!!'
+cookies.set("mini", "cookies!!!");
+cookies.get("mini"); // 'cookies!!!'
 cookies.review(); // mini-cookies-🍪: { mini: { value: 'cookies!!!' } }
-cookies.remove('mini'); // no cookie!!! 😫
+cookies.remove("mini"); // no cookie!!! 😫
 ```
 
 With debugging
 
 ```typescript
-import miniCookies from 'mini-cookies';
+import miniCookies from "mini-cookies";
 
 const cookies = miniCookies({ hasState: true, debug: true });
-cookies.set('mini', 'cookies!!!');
-cookies.get('mini'); // 'cookies!!!' + logs
+cookies.set("mini", "cookies!!!");
+cookies.get("mini"); // 'cookies!!!' + logs
 cookies.review(); // mini-cookies-🍪: { mini: { value: 'cookies!!!' } }
-cookies.remove('mini'); // no cookie!!! 😫 + logs
+cookies.remove("mini"); // no cookie!!! 😫 + logs
 ```
 
 ---
@@ -101,11 +107,11 @@ The unique identifier is important to consider when considering mini-cookie stat
 
 ---
 
-| Option | Type | Default | Description |
-| :------: | :----: | :-------: | :----------- |
-| `id` | `string` | `'mini-cookies-key'` | The unique identifier for each mini-cookie instance. |
-| `hasState` | `boolean` | `false` | Whether or not to enable Mini Cookie state management. |
-| `debug` | `boolean` | `false` | Whether or not to enable debugging. |
+|   Option   |   Type    |       Default        | Description                                            |
+| :--------: | :-------: | :------------------: | :----------------------------------------------------- |
+|    `id`    | `string`  | `'mini-cookies-key'` | The unique identifier for each mini-cookie instance.   |
+| `hasState` | `boolean` |       `false`        | Whether or not to enable Mini Cookie state management. |
+|  `debug`   | `boolean` |       `false`        | Whether or not to enable debugging.                    |
 
 ---
 
@@ -150,9 +156,10 @@ Returns mini-cookie state.
 ---
 
 ### `miniCookies({options}).clearState()`
+
 Clears mini-cookie state.
 
-*hasState must be enabled for this to work!
+\*hasState must be enabled for this to work!
 
 ---
 
@@ -187,7 +194,7 @@ By adding the `days` attribute, you can set the `expires` attribute to the numbe
 ```typescript
 // set expires to 1 day useing `days`
 const cookies = miniCookies();
-cookies.set('mini', 'cookies!!!', { days: 1 });
+cookies.set("mini", "cookies!!!", { days: 1 });
 ```
 
 If you want to explicitly set the `expires` attribute, you can still use `expires` attribute.
@@ -200,7 +207,7 @@ const expiryTime = `${parseInt(date.getTime())}${timeToAdd}`;
 date.setTime(expiryTime);
 const expires = date.toUTCString();
 const cookies = miniCookies();
-cookies.set('mini', 'cookies!!!', { expires });
+cookies.set("mini", "cookies!!!", { expires });
 ```
 
 ---
@@ -212,14 +219,18 @@ cookies.set('mini', 'cookies!!!', { expires });
 ```typescript
 // set isSecure
 const cookies = miniCookies();
-cookies.set('mini', 'cookies!!!', { isSecure: true });
+cookies.set("mini", "cookies!!!", { isSecure: true });
 ```
 
 If you want to explicitly set secure cookie attributes, you can still provide the following attributes.
 
 ```typescript
 // set secure attributes manually
-cookies.set('mini', 'cookies!!!', { secure: true, __Secure__: true, samesite: 'strict' });
+cookies.set("mini", "cookies!!!", {
+  secure: true,
+  __Secure__: true,
+  samesite: "strict",
+});
 ```
 
 ---
@@ -231,14 +242,20 @@ cookies.set('mini', 'cookies!!!', { secure: true, __Secure__: true, samesite: 's
 ```typescript
 // set isStrictSecure
 const cookies = miniCookies();
-cookies.set('mini', 'cookies!!!', { isStrictSecure: true });
+cookies.set("mini", "cookies!!!", { isStrictSecure: true });
 ```
 
 If you want to explicitly set secure cookie attributes, you can still provide the following attributes.
 
 ```typescript
 // set secure attributes manually
-cookies.set('mini', 'cookies!!!', { secure: true, __Secure__: true, samesite: 'strict', __Host__: true, path: '/' });
+cookies.set("mini", "cookies!!!", {
+  secure: true,
+  __Secure__: true,
+  samesite: "strict",
+  __Host__: true,
+  path: "/",
+});
 ```
 
 ---
@@ -251,7 +268,7 @@ With Mini Cookies, you can opt-in for state management.
 
 ```typescript
 const cookies = miniCookies({ hasState: true });
-cookies.set('mini', 'cookies!!!');
+cookies.set("mini", "cookies!!!");
 cookies.review(); // { mini: 'cookies!!!' }
 ```
 
@@ -259,7 +276,7 @@ If you don't want opt-in state management, you can still use Mini Cookies withou
 
 ```typescript
 const cookies = miniCookies();
-cookies.set('mini', 'cookies!!!');
+cookies.set("mini", "cookies!!!");
 cookies.review(); // <void>
 ```
 
@@ -281,12 +298,13 @@ cookies.review(); // <void>
 [![Mini Cookies—A document.cookie manager - Watch Video](https://cdn.loom.com/sessions/thumbnails/a77bdd325bcf4c399c93d7297988d42b-with-play.gif)](https://www.loom.com/share/a77bdd325bcf4c399c93d7297988d42b)
 
 ---
+
 ## Comparisons
 
-| name | file size | key features |
-| :--- | --- | :--- |
+| name         | file size                                                        | key features                       |
+| :----------- | ---------------------------------------------------------------- | :--------------------------------- |
 | mini-cookies | ![size](https://img.shields.io/bundlephobia/minzip/mini-cookies) | state management, smart attributes |
-| js-cookie | ![size](https://img.shields.io/bundlephobia/minzip/js-cookie/3) | well known, simple api |
+| js-cookie    | ![size](https://img.shields.io/bundlephobia/minzip/js-cookie/3)  | well known, simple api             |
 
 ---
 

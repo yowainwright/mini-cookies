@@ -3,16 +3,9 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import { uglify } from "rollup-plugin-uglify";
 
-import json from "./package.json" assert { type: 'json' };
+import json from "./package.json" assert { type: "json" };
 
-const {
-  author,
-  description,
-  homepage,
-  license,
-  name,
-  version,
-} = json;
+const { author, description, homepage, license, name, version } = json;
 
 const banner = `/**
   @preserve ${name} - ${description}

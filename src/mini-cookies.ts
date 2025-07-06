@@ -1,8 +1,13 @@
 import { setCookieAttributes, setCookieList } from "./utils";
-import { CookieAttributes, CookieFactory, Options } from "./types";
+import {
+  CookieAttributes,
+  CookieFactory,
+  Options,
+  SetUpdatedState,
+} from "./types";
 
 // Conditionally import state manager only when hasState is used
-let setUpdatedStateFunc: Function | null = null;
+let setUpdatedStateFunc: ((params: SetUpdatedState) => void) | null = null;
 
 const ensureStateManager = async () => {
   if (!setUpdatedStateFunc) {
@@ -59,7 +64,7 @@ export default function miniCookies({
       if (setUpdatedStateFunc) {
         setUpdatedStateFunc({ id: this.id, name, value, attrs });
       } else {
-        ensureStateManager().then(func => {
+        ensureStateManager().then((func) => {
           func({ id: this.id, name, value, attrs });
         });
       }

@@ -5,16 +5,16 @@ import { setCookieAttributes } from "../src/utils";
 import miniCookies from "../src/mini-cookies";
 
 // Setup DOM environment for testing
-const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', {
-  url: 'http://localhost',
-  storageQuota: 10000000
+const dom = new JSDOM("<!DOCTYPE html><html><body></body></html>", {
+  url: "http://localhost",
+  storageQuota: 10000000,
 });
 global.document = dom.window.document;
 global.localStorage = dom.window.localStorage;
 
 describe("MiniCookies", () => {
   it("miniCookies is defined", () => {
-    assert.ok(typeof miniCookies === 'function');
+    assert.ok(typeof miniCookies === "function");
   });
 
   it("gets cookies", () => {
@@ -42,21 +42,25 @@ describe("attributes", () => {
 });
 
 describe("MiniCookies state", () => {
-  it('updates state', async () => {
+  it("updates state", async () => {
     const cookies = miniCookies({ hasState: true });
-    cookies.set('biz', 'buzz');
+    cookies.set("biz", "buzz");
     // Wait for async state update
-    await new Promise(resolve => setTimeout(resolve, 10));
-    assert.deepStrictEqual(cookies.review(), { biz: { name: 'biz', value: 'buzz' } });
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    assert.deepStrictEqual(cookies.review(), {
+      biz: { name: "biz", value: "buzz" },
+    });
     cookies.clearState();
   });
 
-  it('clears state', async () => {
+  it("clears state", async () => {
     const cookies = miniCookies({ hasState: true });
-    cookies.set('flower', 'power');
+    cookies.set("flower", "power");
     // Wait for async state update
-    await new Promise(resolve => setTimeout(resolve, 10));
-    assert.deepStrictEqual(cookies.review(), { flower: { name: 'flower', value: 'power' } });
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    assert.deepStrictEqual(cookies.review(), {
+      flower: { name: "flower", value: "power" },
+    });
     cookies.clearState();
     assert.deepStrictEqual(cookies.review(), {});
   });
