@@ -14,7 +14,6 @@
     },
     "./package.json": "./package.json"
   },
-  "unpkg": "dist/mini-cookies.umd.js",
   "sideEffects": false,
   "files": [
     "dist"
@@ -31,16 +30,12 @@
     "prepublishOnly": "pnpm test && pnpm build",
     "release": "release-it",
     "test": "tsx --test tests/mini-cookies.test.ts",
-    "transpile": "tsc && rollup --config rollup.config.ts --configPlugin typescript",
     "typecheck": "tsc --noEmit",
     "update": "codependence --update"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
-    "@rollup/plugin-commonjs": "28.0.6",
-    "@rollup/plugin-node-resolve": "16.0.1",
-    "@rollup/plugin-typescript": "12.1.4",
     "@types/node": "24.0.7",
     "@typescript-eslint/eslint-plugin": "8.35.0",
     "@typescript-eslint/parser": "8.35.0",
@@ -53,8 +48,6 @@
     "path-exists-cli": "^2.0.0",
     "release-it": "19.0.3",
     "rimraf": "6.0.1",
-    "rollup": "4.44.1",
-    "rollup-plugin-uglify": "^6.0.4",
     "tslib": "2.8.1",
     "tsup": "^8.5.0",
     "tsx": "^4.20.3",
@@ -74,7 +67,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && vitest run && pnpm typecheck"
+      "pre-commit": "lint-staged && pnpm test && pnpm typecheck"
     }
   },
   "lint-staged": {

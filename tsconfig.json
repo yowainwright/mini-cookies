@@ -11,5 +11,5 @@
     "declaration": true,
     "strict": true
   },
-  "exclude": ["rollup.config.ts", "tests/*"]
+  "exclude": ["tests/*"]
 }
