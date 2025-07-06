@@ -1,22 +1,34 @@
-import { describe, it, expect } from "vitest";
+import { describe, it } from "node:test";
+import assert from "node:assert";
+import { JSDOM } from "jsdom";
 import { setCookieAttributes } from "../src/utils";
 import miniCookies from "../src/mini-cookies";
 
+// Setup DOM environment for testing
+const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', {
+  url: 'http://localhost',
+  storageQuota: 10000000
+});
+global.document = dom.window.document;
+global.localStorage = dom.window.localStorage;
+
 describe("MiniCookies", () => {
-  it("miniCookies is defined", () => expect(miniCookies).toBeDefined());
+  it("miniCookies is defined", () => {
+    assert.ok(typeof miniCookies === 'function');
+  });
 
   it("gets cookies", () => {
     document.cookie = "foo=bar;";
-    expect(miniCookies().get("foo")).toBe("bar");
+    assert.strictEqual(miniCookies().get("foo"), "bar");
   });
 
   it("sets cookies", () => {
-    expect(miniCookies().set("biz", "baz").get("biz")).toBe("baz");
+    assert.strictEqual(miniCookies().set("biz", "baz").get("biz"), "baz");
   });
 
   it("removes a cookie", () => {
-    expect(miniCookies().set("fiz", "buz").get("fiz")).toBe("buz");
-    expect(miniCookies().remove("fiz").get("fiz")).toBeUndefined();
+    assert.strictEqual(miniCookies().set("fiz", "buz").get("fiz"), "buz");
+    assert.strictEqual(miniCookies().remove("fiz").get("fiz"), undefined);
   });
 });
 
@@ -25,23 +37,27 @@ describe("attributes", () => {
     const today = new Date();
     const expires = new Date(today.setDate(today.getDate() + 7));
     const result = setCookieAttributes({ days: 1, expires });
-    expect(result).toContain("expires=");
+    assert.ok(result.includes("expires="));
   });
 });
 
 describe("MiniCookies state", () => {
-  it('updates state', () => {
+  it('updates state', async () => {
     const cookies = miniCookies({ hasState: true });
     cookies.set('biz', 'buzz');
-    expect(cookies.review()).toEqual({ biz: { name: 'biz', value: 'buzz' } });
+    // Wait for async state update
+    await new Promise(resolve => setTimeout(resolve, 10));
+    assert.deepStrictEqual(cookies.review(), { biz: { name: 'biz', value: 'buzz' } });
     cookies.clearState();
   });
 
-  it('clears state', () => {
+  it('clears state', async () => {
     const cookies = miniCookies({ hasState: true });
     cookies.set('flower', 'power');
-    expect(cookies.review()).toEqual({ flower: { name: 'flower', value: 'power' } });
+    // Wait for async state update
+    await new Promise(resolve => setTimeout(resolve, 10));
+    assert.deepStrictEqual(cookies.review(), { flower: { name: 'flower', value: 'power' } });
     cookies.clearState();
-    expect(cookies.review()).toEqual({});
+    assert.deepStrictEqual(cookies.review(), {});
   });
 });

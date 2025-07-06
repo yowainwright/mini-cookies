@@ -1,5 +1,16 @@
-import { setCookieAttributes, setCookieList, setUpdatedState } from "./utils";
+import { setCookieAttributes, setCookieList } from "./utils";
 import { CookieAttributes, CookieFactory, Options } from "./types";
+
+// Conditionally import state manager only when hasState is used
+let setUpdatedStateFunc: Function | null = null;
+
+const ensureStateManager = async () => {
+  if (!setUpdatedStateFunc) {
+    const module = await import("./state-manager");
+    setUpdatedStateFunc = module.setUpdatedState;
+  }
+  return setUpdatedStateFunc;
+};
 
 const hasStateOption = {
   ["mini-cookies"]: {
@@ -44,7 +55,14 @@ export default function miniCookies({
         if (this.isDebugging) console.info(hasStateOption);
         return this;
       }
-      setUpdatedState({ id: this.id, name, value, attrs });
+      // Use cached function if available, otherwise load dynamically
+      if (setUpdatedStateFunc) {
+        setUpdatedStateFunc({ id: this.id, name, value, attrs });
+      } else {
+        ensureStateManager().then(func => {
+          func({ id: this.id, name, value, attrs });
+        });
+      }
       return this;
     },
 
@@ -73,6 +91,7 @@ export default function miniCookies({
       const cookieValue = encodeURIComponent(value);
       const cookieAttributes = setCookieAttributes(attrs);
       document.cookie = `${name}=${cookieValue};${cookieAttributes}`;
+      // Fire and forget - don't wait for state update
       this.updateState(name, value, attrs);
       return this;
     },
@@ -80,6 +99,7 @@ export default function miniCookies({
     // removes a cookie by setting it's expires attribute to -1 and value to empty
     remove(name: string) {
       this.set(name, "", { days: -1 });
+      // Fire and forget - don't wait for state update
       this.updateState(name, "");
       return this;
     },
