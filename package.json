@@ -2,33 +2,39 @@
   "name": "mini-cookies",
   "description": "A simple and minimalistic cookie management tool 🍪",
   "version": "0.7.6",
-  "main": "dist/mini-cookies.umd.js",
+  "type": "module",
+  "main": "dist/mini-cookies.cjs",
+  "module": "dist/mini-cookies.js",
   "types": "dist/mini-cookies.d.ts",
-  "unpkg": "dist/mini-cookies.umd.js",
+  "exports": {
+    ".": {
+      "types": "./dist/mini-cookies.d.ts",
+      "import": "./dist/mini-cookies.js",
+      "require": "./dist/mini-cookies.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
   "engines": {
-    "pnpm": ">=8.0.0"
+    "node": ">=24.0.0"
   },
   "scripts": {
-    "build": "rimraf dist && pnpm transpile",
+    "build": "tsup",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint --fix src/**/*.ts",
     "prepare": "husky install",
     "prepublishOnly": "pnpm test && pnpm build",
     "release": "release-it",
-    "test": "vitest run --environment jsdom",
-    "transpile": "tsc && rollup --config rollup.config.ts --configPlugin typescript",
+    "test": "tsx --test tests/mini-cookies.test.ts",
     "typecheck": "tsc --noEmit",
     "update": "codependence --update"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
-    "@rollup/plugin-commonjs": "28.0.6",
-    "@rollup/plugin-node-resolve": "16.0.1",
-    "@rollup/plugin-typescript": "12.1.4",
     "@types/node": "24.0.7",
     "@typescript-eslint/eslint-plugin": "8.35.0",
     "@typescript-eslint/parser": "8.35.0",
@@ -41,12 +47,10 @@
     "path-exists-cli": "^2.0.0",
     "release-it": "19.0.3",
     "rimraf": "6.0.1",
-    "rollup": "4.44.1",
-    "rollup-plugin-uglify": "^6.0.4",
     "tslib": "2.8.1",
-    "typescript": "5.8.3",
-    "vite": "7.0.0",
-    "vitest": "3.2.4"
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "5.8.3"
   },
   "commitlint": {
     "extends": [
@@ -62,7 +66,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && vitest run && pnpm typecheck"
+      "pre-commit": "lint-staged && pnpm test && pnpm typecheck"
     }
   },
   "lint-staged": {
