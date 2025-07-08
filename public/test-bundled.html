@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Cookies E2E Tests</title>
+</head>
+<body>
+    <h1>Mini-Cookies E2E Test Page</h1>
+    
+    <div>
+        <h2>Basic Cookie Operations</h2>
+        <button id="set-cookie">Set Cookie</button>
+        <button id="get-cookie">Get Cookie</button>
+        <button id="remove-cookie">Remove Cookie</button>
+        <div id="cookie-result"></div>
+    </div>
+
+    <div>
+        <h2>State Management</h2>
+        <button id="set-state-cookie">Set Cookie with State</button>
+        <button id="review-state">Review State</button>
+        <button id="clear-state">Clear State</button>
+        <div id="state-result"></div>
+    </div>
+
+    <div>
+        <h2>Advanced Features</h2>
+        <button id="set-with-attrs">Set with Attributes</button>
+        <button id="test-debug">Test Debug Mode</button>
+        <div id="advanced-result"></div>
+    </div>
+
+    <!-- Include the bundled mini-cookies library -->
+    <script src="mini-cookies.bundle.js"></script>
+    
+    <script>
+        // The bundled script automatically exposes miniCookies as a global
+        window.testResults = {};
+
+        // Basic cookie operations
+        const basicCookies = miniCookies();
+        
+        document.getElementById('set-cookie').addEventListener('click', () => {
+            basicCookies.set('testCookie', 'testValue');
+            document.getElementById('cookie-result').textContent = 'Cookie set: testCookie=testValue';
+            window.testResults.setCookie = true;
+        });
+
+        document.getElementById('get-cookie').addEventListener('click', () => {
+            const value = basicCookies.get('testCookie');
+            document.getElementById('cookie-result').textContent = `Cookie value: ${value}`;
+            window.testResults.getCookie = value;
+        });
+
+        document.getElementById('remove-cookie').addEventListener('click', () => {
+            basicCookies.remove('testCookie');
+            const value = basicCookies.get('testCookie');
+            document.getElementById('cookie-result').textContent = `Cookie after removal: ${value}`;
+            window.testResults.removeCookie = value === undefined;
+        });
+
+        // State management
+        const stateCookies = miniCookies({ hasState: true, debug: false });
+
+        document.getElementById('set-state-cookie').addEventListener('click', async () => {
+            stateCookies.set('stateCookie', 'stateValue');
+            document.getElementById('state-result').textContent = 'State cookie set';
+            window.testResults.setStateCookie = true;
+        });
+
+        document.getElementById('review-state').addEventListener('click', () => {
+            const state = stateCookies.review();
+            document.getElementById('state-result').textContent = `State: ${JSON.stringify(state)}`;
+            window.testResults.reviewState = state;
+        });
+
+        document.getElementById('clear-state').addEventListener('click', () => {
+            stateCookies.clearState();
+            const state = stateCookies.review();
+            document.getElementById('state-result').textContent = `State after clear: ${JSON.stringify(state)}`;
+            window.testResults.clearState = state;
+        });
+
+        // Advanced features
+        document.getElementById('set-with-attrs').addEventListener('click', () => {
+            basicCookies.set('advancedCookie', 'advancedValue', { 
+                days: 7, 
+                path: '/',
+                secure: false 
+            });
+            document.getElementById('advanced-result').textContent = 'Cookie with attributes set';
+            window.testResults.setWithAttrs = true;
+        });
+
+        document.getElementById('test-debug').addEventListener('click', () => {
+            const debugCookies = miniCookies({ debug: true });
+            // Capture console output
+            const originalLog = console.debug;
+            let debugOutput = '';
+            console.debug = (...args) => {
+                debugOutput = JSON.stringify(args);
+                originalLog(...args);
+            };
+            
+            debugCookies.set('debugCookie', 'debugValue');
+            const value = debugCookies.get('debugCookie');
+            
+            console.debug = originalLog;
+            document.getElementById('advanced-result').textContent = `Debug mode tested, value: ${value}`;
+            window.testResults.testDebug = { value, debugOutput };
+        });
+
+        // Signal that the page is ready
+        window.pageReady = true;
+    </script>
+</body>
+</html>
