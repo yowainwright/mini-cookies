@@ -6,15 +6,18 @@
   "main": "dist/mini-cookies.cjs",
   "module": "dist/mini-cookies.js",
   "types": "dist/mini-cookies.d.ts",
+  "browser": "dist/mini-cookies.umd.js",
   "exports": {
     ".": {
       "types": "./dist/mini-cookies.d.ts",
+      "browser": "./dist/mini-cookies.umd.js",
       "import": "./dist/mini-cookies.js",
       "require": "./dist/mini-cookies.cjs"
     },
     "./package.json": "./package.json"
   },
-  "unpkg": "dist/mini-cookies.js",
+  "unpkg": "dist/mini-cookies.umd.js",
+  "jsdelivr": "dist/mini-cookies.umd.js",
   "sideEffects": false,
   "files": [
     "dist"
@@ -30,8 +33,9 @@
     "prepublishOnly": "pnpm test && pnpm build",
     "release": "release-it",
     "test": "tsx --test tests/mini-cookies.test.ts",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:prepare": "cp dist/mini-cookies.bundle.js public/ && cp dist/mini-cookies.bundle.js.map public/",
+    "test:e2e": "pnpm test:e2e:prepare && playwright test",
+    "test:e2e:ui": "pnpm test:e2e:prepare && playwright test --ui",
     "test:all": "pnpm test && pnpm test:e2e",
     "serve": "serve public -l 3000",
     "typecheck": "tsc --noEmit",
