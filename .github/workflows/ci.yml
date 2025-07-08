@@ -43,5 +43,7 @@ jobs:
       - run: pnpm build
       - run: pnpm lint
       - run: pnpm test
+      - run: npx playwright install --with-deps
+      - run: pnpm test:e2e
         env:
           CI: true

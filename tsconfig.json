@@ -11,5 +11,5 @@
     "declaration": true,
     "strict": true
   },
-  "exclude": ["tests/*", "tsup.config.ts", "dist/*"]
+  "exclude": ["tests/*", "tsup.config.ts", "dist/*", "playwright.config.ts", "e2e/*"]
 }

@@ -48,7 +48,7 @@ export function setCookieAttributes(attrs: CookieAttributes = {}): string {
     // return days helper as expires
     else if (attr === "days")
       str += `; expires=${new Date(
-        Date.now() + (attrs[attr] as number) || 0 * 864e5,
+        Date.now() + ((attrs[attr] as number) || 0) * 864e5,
       ).toUTCString()};`;
     // return all other key value string pairs
     else str += `; ${attr}=${attrs[attr as keyof CookieAttributes]}`;
