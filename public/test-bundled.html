@@ -31,9 +31,10 @@
         <div id="advanced-result"></div>
     </div>
 
-    <!-- Include the mini-cookies library from dist as an ESM module -->
-    <script type="module">
-        import miniCookies from '../dist/mini-cookies.js';
+    <!-- Include the bundled mini-cookies library -->
+    <script src="mini-cookies.bundle.js"></script>
+    
+    <script>
         // The bundled script automatically exposes miniCookies as a global
         window.testResults = {};
 

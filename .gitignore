@@ -12,3 +12,7 @@ dist-ssr
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# E2E test bundle (copied from dist)
+/public/mini-cookies.bundle.js
+/public/mini-cookies.bundle.js.map
