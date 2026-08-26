@@ -16,3 +16,5 @@ dist-ssr
 # E2E test bundle (copied from dist)
 /public/mini-cookies.bundle.js
 /public/mini-cookies.bundle.js.map
+/public/state.bundle.js
+/public/state.bundle.js.map

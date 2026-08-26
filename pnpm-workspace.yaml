@@ -1,0 +1,9 @@
+packages: []
+autoInstallPeers: false
+minimumReleaseAgeStrict: true
+overrides:
+  "ajv@>=7.0.0-alpha.0 <8.18.0": 8.18.0
+  "brace-expansion@<1.1.18": 1.1.18
+  "brace-expansion@>=3.0.0 <5.0.9": 5.0.9
+  "ip-address@<=10.3.0": 10.3.1
+  "js-yaml@>=4.0.0 <4.3.1": 4.3.1

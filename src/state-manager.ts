@@ -1,10 +1,8 @@
-import { SetUpdatedState, State } from "./types";
+import type { SetUpdatedState, State } from "./types.ts";
 
 export function setUpdatedState({ id, name, value, attrs }: SetUpdatedState) {
   const currentStorage = localStorage.getItem(id);
-  const currentState = (
-    currentStorage ? JSON.parse(currentStorage) : {}
-  ) as State;
+  const currentState = (currentStorage ? JSON.parse(currentStorage) : {}) as State;
   if (value) {
     const updatedState = {
       ...currentState,
@@ -16,8 +14,8 @@ export function setUpdatedState({ id, name, value, attrs }: SetUpdatedState) {
     };
     localStorage.setItem(id, JSON.stringify(updatedState));
   } else if (Object.keys(currentState).length) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { [name]: deleted, ...updatedState } = currentState;
+    const updatedState = { ...currentState };
+    delete updatedState[name];
     localStorage.setItem(id, JSON.stringify(updatedState));
   }
 }

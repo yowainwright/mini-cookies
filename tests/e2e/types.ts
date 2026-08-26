@@ -1,6 +1,7 @@
 declare global {
   interface Window {
     miniCookies: any;
+    miniCookiesState: any;
     testResults: {
       setCookie?: boolean;
       getCookie?: string;
