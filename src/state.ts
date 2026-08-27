@@ -1,8 +1,8 @@
 import miniCookies from "./index.ts";
 import { setUpdatedState } from "./state-manager.ts";
-import type { CookieAttributes, CookieDictionary, CookieFactory, Options } from "./types.ts";
+import type { CookieAttributes, CookieFactory, CookieState, Options } from "./types.ts";
 
-function readState(id: string): CookieDictionary {
+function readState(id: string): CookieState {
   const currentStorage = localStorage.getItem(id);
   return currentStorage ? JSON.parse(currentStorage) : {};
 }

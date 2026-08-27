@@ -1,8 +1,8 @@
-import type { SetUpdatedState, State } from "./types.ts";
+import type { CookieState, SetUpdatedState } from "./types.ts";
 
 export function setUpdatedState({ id, name, value, attrs }: SetUpdatedState) {
   const currentStorage = localStorage.getItem(id);
-  const currentState = (currentStorage ? JSON.parse(currentStorage) : {}) as State;
+  const currentState = (currentStorage ? JSON.parse(currentStorage) : {}) as CookieState;
   if (value) {
     const updatedState = {
       ...currentState,

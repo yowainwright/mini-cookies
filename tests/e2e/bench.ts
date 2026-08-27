@@ -35,16 +35,16 @@ const targets: Target[] = [
     path: "dist/state.umd.js",
   },
   {
-    name: "js-cookie@3",
+    name: "js-cookie@3.0.8",
     note: "browser minified bundle",
     source: "remote",
-    url: "https://cdn.jsdelivr.net/npm/js-cookie@3/dist/js.cookie.min.js",
+    url: "https://cdn.jsdelivr.net/npm/js-cookie@3.0.8/dist/js.cookie.min.js",
   },
   {
-    name: "tough-cookie@6",
+    name: "tough-cookie@6.0.2",
     note: "Node-oriented ESM entry, not browser-equivalent",
     source: "remote",
-    url: "https://cdn.jsdelivr.net/npm/tough-cookie@6/+esm",
+    url: "https://cdn.jsdelivr.net/npm/tough-cookie@6.0.2/+esm",
   },
 ];
 

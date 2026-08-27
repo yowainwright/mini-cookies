@@ -163,7 +163,9 @@
       },
       "pastoralist",
       "release-it",
-      "rolldown",
+      {
+        "rolldown": "1.2.5"
+      },
       "serve",
       "tslib",
       "typescript"

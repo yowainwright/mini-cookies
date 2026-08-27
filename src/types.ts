@@ -22,11 +22,17 @@ export interface Options {
   id?: string;
 }
 
-export interface State {
-  [x: string]:
-    | Record<string, Record<string, string> | undefined>
-    | { attrs?: CookieAttributes | undefined; value: string };
+export interface CookieStateItem {
+  attrs?: CookieAttributes;
+  name: string;
+  value: string;
 }
+
+export interface CookieState {
+  [name: string]: CookieStateItem;
+}
+
+export type State = CookieState;
 
 export interface SetUpdatedState {
   id: string;
@@ -43,7 +49,7 @@ export interface CookieFactory {
   get: (name: string) => string | void;
   updateState: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory;
   clearState: () => CookieFactory;
-  review: () => CookieDictionary | void;
+  review: () => CookieState | void;
   set: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory;
   remove: (name: string) => CookieFactory;
 }
