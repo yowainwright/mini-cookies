@@ -1,10 +1,35 @@
 import miniCookies from "./index.ts";
-import { setUpdatedState } from "./state-manager.ts";
-import type { CookieAttributes, CookieFactory, CookieState, Options } from "./types.ts";
+import type {
+  CookieAttributes,
+  CookieFactory,
+  CookieState,
+  Options,
+  SetUpdatedState,
+} from "./types.ts";
 
 function readState(id: string): CookieState {
   const currentStorage = localStorage.getItem(id);
   return currentStorage ? JSON.parse(currentStorage) : {};
+}
+
+function setUpdatedState({ id, name, value, attrs }: SetUpdatedState) {
+  const currentStorage = localStorage.getItem(id);
+  const currentState = (currentStorage ? JSON.parse(currentStorage) : {}) as CookieState;
+  if (value) {
+    const updatedState = {
+      ...currentState,
+      [name]: {
+        name,
+        value,
+        ...(Object.keys(attrs).length ? { attrs } : {}),
+      },
+    };
+    localStorage.setItem(id, JSON.stringify(updatedState));
+  } else if (Object.keys(currentState).length) {
+    const updatedState = { ...currentState };
+    delete updatedState[name];
+    localStorage.setItem(id, JSON.stringify(updatedState));
+  }
 }
 
 export default function miniCookiesWithState({
