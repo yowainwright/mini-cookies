@@ -1,4 +1,0 @@
-version = 1
-auto_approve_usernames = ["yowainwright"]
-merge.automerge_label = ['codependencies', 'automerge 🚀']
-update.autoupdate_labels = ['codependencies','autoupdate 🔁']

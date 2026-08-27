@@ -7,6 +7,16 @@ dist-ssr
 .husky
 .vscode
 
+# Local agent config
+.agents/
+.claude/
+.codex/
+.cursor/
+.gemini/
+.continue/
+.windsurf/
+.aider*
+
 # Playwright
 /test-results/
 /playwright-report/
@@ -16,3 +26,5 @@ dist-ssr
 # E2E test bundle (copied from dist)
 /public/mini-cookies.bundle.js
 /public/mini-cookies.bundle.js.map
+/public/state.bundle.js
+/public/state.bundle.js.map

@@ -6,10 +6,14 @@
     "target": "esnext",
     "module": "esnext",
     "lib": ["esnext", "dom"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
     "checkJs": false,
     "declaration": true,
+    "verbatimModuleSyntax": true,
     "strict": true
   },
-  "exclude": ["tests/*", "tsup.config.ts", "dist/*", "playwright.config.ts", "e2e/*"]
+  "include": ["src/**/*"],
+  "exclude": ["tests", "dist"]
 }

@@ -3,14 +3,16 @@ export interface CookieDictionary {
 }
 
 export interface CookieAttributes {
-  days?: number; // ex, 7
-  domain?: string; // ex "example.com"
-  expires?: Date; // ex, new Date(Date.now())
+  days?: number;
+  domain?: string;
+  expires?: Date;
+  isSecure?: boolean;
+  isStrictSecure?: boolean;
   ["__Host-"]?: string;
   httponly?: boolean;
-  ["max-age"]?: string; // ex, -1
-  path?: string; // ex, "/foo/bar"
-  samesite?: "lax" | "strict" | "none"; // lax: user tracking level, strick: prevents cross-site cookie sending
+  ["max-age"]?: string;
+  path?: string;
+  samesite?: "lax" | "strict" | "none";
   secure?: boolean;
   ["__Secure-"]?: boolean;
 }
@@ -21,11 +23,17 @@ export interface Options {
   id?: string;
 }
 
-export interface State {
-  [x: string]:
-    | Record<string, Record<string, string> | undefined>
-    | { attrs?: CookieAttributes | undefined; value: string };
+export interface CookieStateItem {
+  attrs?: CookieAttributes;
+  name: string;
+  value: string;
 }
+
+export interface CookieState {
+  [name: string]: CookieStateItem;
+}
+
+export type State = CookieState;
 
 export interface SetUpdatedState {
   id: string;
@@ -40,13 +48,9 @@ export interface CookieFactory {
   id: string;
   setCookieList: () => CookieDictionary;
   get: (name: string) => string | void;
-  updateState: (
-    name: string,
-    value: string,
-    attrs?: CookieAttributes,
-  ) => CookieFactory;
+  updateState: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory;
   clearState: () => CookieFactory;
-  review: () => CookieDictionary;
+  review: () => CookieState | void;
   set: (name: string, value: string, attrs?: CookieAttributes) => CookieFactory;
   remove: (name: string) => CookieFactory;
 }

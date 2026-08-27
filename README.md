@@ -8,18 +8,14 @@
 [![unpkg](https://img.shields.io/badge/unpkg-link-blue.svg)](https://unpkg.com/mini-cookies@latest/dist/mini-cookies.umd.js)
 [![Github](https://badgen.net/badge/icon/github?icon=github&label&color=black)](https://github.com/yowainwright/mini-cookies)
 
-A mini JS Document.cookie manager to help you write your cookies right! 🎯
+<!-- package description from package.json -->
+
+Tiny, worry-free cookie management for browser apps.
 
 Use (or try) it in your \*browser's console right now!
 
 ```js
-eval(
-  await (
-    await fetch(
-      "https://unpkg.com/mini-cookies@latest/dist/mini-cookies.umd.js",
-    )
-  ).text(),
-);
+eval(await (await fetch("https://unpkg.com/mini-cookies@latest/dist/mini-cookies.umd.js")).text());
 const cookies = miniCookies();
 cookies.set("mini", "cookies!");
 cookies.get("mini"); // cookies!
@@ -31,13 +27,14 @@ cookies.get("mini"); // cookies!
 
 ## Why Mini Cookies?
 
-Mini Cookie's API is very small. It's size is also very small.
-Even though Mini Cookies is super small, it's built to make using [`document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)'s API easy!
+Mini Cookies is a small browser cookie utility for simple, predictable cookie management.
+It helps with common [`document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie) work without making state tracking mandatory.
 
 ### How?
 
-1. It [smartly assists](#smartly-assist-constructing-cookies) in contructing `document.cookie` attributes.
-2. And, it store's your `document.cookie` [state](opt-in-cookie-state-management) so you can access/review your `document.cookie`'s state later—including attributes!
+1. It [assists](#smartly-assist-constructing-cookies) in constructing `document.cookie` attributes.
+2. It can store `document.cookie` [state](opt-in-cookie-state-management) when you need to review cookies later—including attributes.
+3. It keeps state in a separate entrypoint so basic cookie usage stays small.
 
 ---
 
@@ -66,9 +63,9 @@ cookies.remove("mini"); // no cookie!!! 😫
 With Mini Cookie state management
 
 ```typescript
-import miniCookies from "mini-cookies";
+import miniCookies from "mini-cookies/state";
 
-const cookies = miniCookies({ hasState: true });
+const cookies = miniCookies();
 cookies.set("mini", "cookies!!!");
 cookies.get("mini"); // 'cookies!!!'
 cookies.review(); // mini-cookies-🍪: { mini: { value: 'cookies!!!' } }
@@ -78,9 +75,9 @@ cookies.remove("mini"); // no cookie!!! 😫
 With debugging
 
 ```typescript
-import miniCookies from "mini-cookies";
+import miniCookies from "mini-cookies/state";
 
-const cookies = miniCookies({ hasState: true, debug: true });
+const cookies = miniCookies({ debug: true });
 cookies.set("mini", "cookies!!!");
 cookies.get("mini"); // 'cookies!!!' + logs
 cookies.review(); // mini-cookies-🍪: { mini: { value: 'cookies!!!' } }
@@ -95,7 +92,6 @@ cookies.remove("mini"); // no cookie!!! 😫 + logs
 
 **`{options}`** an object argument of **Mini Cookies** options.
 
-- `{hasState: boolean}`: Whether or not to enable Mini Cookie state management.
 - `{debug: boolean}`: Whether or not to enable debugging.
 - \*`{id: string}`: The unique identifier for each mini-cookie instance.
 
@@ -107,11 +103,10 @@ The unique identifier is important to consider when considering mini-cookie stat
 
 ---
 
-|   Option   |   Type    |       Default        | Description                                            |
-| :--------: | :-------: | :------------------: | :----------------------------------------------------- |
-|    `id`    | `string`  | `'mini-cookies-key'` | The unique identifier for each mini-cookie instance.   |
-| `hasState` | `boolean` |       `false`        | Whether or not to enable Mini Cookie state management. |
-|  `debug`   | `boolean` |       `false`        | Whether or not to enable debugging.                    |
+| Option  |   Type    |        Default         | Description                                          |
+| :-----: | :-------: | :--------------------: | :--------------------------------------------------- |
+|  `id`   | `string`  | `'mini-cookies-state'` | The unique identifier for each mini-cookie instance. |
+| `debug` | `boolean` |        `false`         | Whether or not to enable debugging.                  |
 
 ---
 
@@ -149,17 +144,13 @@ Removes a cookie by string.
 
 ### `miniCookies({options}).review()`
 
-Returns mini-cookie state.
-
-\***`hasState`** must be enabled for this to work!
+Returns mini-cookie state from the `mini-cookies/state` entrypoint.
 
 ---
 
 ### `miniCookies({options}).clearState()`
 
-Clears mini-cookie state.
-
-\*hasState must be enabled for this to work!
+Clears mini-cookie state from the `mini-cookies/state` entrypoint.
 
 ---
 
@@ -267,7 +258,9 @@ A huge benefit to Mini-Cookies is the ability to opt-in for state management. Al
 With Mini Cookies, you can opt-in for state management.
 
 ```typescript
-const cookies = miniCookies({ hasState: true });
+import miniCookies from "mini-cookies/state";
+
+const cookies = miniCookies();
 cookies.set("mini", "cookies!!!");
 cookies.review(); // { mini: 'cookies!!!' }
 ```
@@ -296,15 +289,6 @@ cookies.review(); // <void>
 - [mini-cookies multi-state instance demo](https://stackblitz.com/edit/mini-cookies-multi-state-instances?file=index.js)
 
 [![Mini Cookies—A document.cookie manager - Watch Video](https://cdn.loom.com/sessions/thumbnails/a77bdd325bcf4c399c93d7297988d42b-with-play.gif)](https://www.loom.com/share/a77bdd325bcf4c399c93d7297988d42b)
-
----
-
-## Comparisons
-
-| name         | file size                                                        | key features                       |
-| :----------- | ---------------------------------------------------------------- | :--------------------------------- |
-| mini-cookies | ![size](https://img.shields.io/bundlephobia/minzip/mini-cookies) | state management, smart attributes |
-| js-cookie    | ![size](https://img.shields.io/bundlephobia/minzip/js-cookie/3)  | well known, simple api             |
 
 ---
 

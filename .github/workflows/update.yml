@@ -1,37 +1,43 @@
 name: update codependencies
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 5 * * 1"
 
-jobs:
-  udpate-deps:
-    runs-on: ubuntu-latest
+env:
+  NODE_VERSION: 26.7.0
+  PNPM_VERSION: 11.18.0
 
-    strategy:
-      matrix:
-        node-version: [24.x]
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v4
         with:
-          version: latest
-      - name: Use Node.js ${{ matrix.node-version }}
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
-      - run: pnpm install --no-frozen-lockfile
-      - run: pnpm build
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
       - run: pnpm run update
       - run: pnpm install --no-frozen-lockfile
+      - run: pnpm run deps:validate
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PR_CREATE_TOKEN }}
           commit-message: Update dependencies
-          title: "[Codependence]  update dependencies"
+          title: "[Codependence] update dependencies"
           body: |
             ## Dependency updates
 

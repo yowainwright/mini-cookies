@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  NODE_VERSION: 26.7.0
+  PNPM_VERSION: 11.18.0
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,36 +18,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
+
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - run: pnpm install --no-frozen-lockfile
-      - run: pnpm build
-      - run: pnpm lint
-      - run: pnpm test
-      - run: npx playwright install --with-deps
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run deps:validate
+      - run: pnpm run validate
+      - run: pnpm exec playwright install --with-deps
       - run: pnpm test:e2e
         env:
           CI: true
