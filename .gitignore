@@ -7,6 +7,16 @@ dist-ssr
 .husky
 .vscode
 
+# Local agent config
+.agents/
+.claude/
+.codex/
+.cursor/
+.gemini/
+.continue/
+.windsurf/
+.aider*
+
 # Playwright
 /test-results/
 /playwright-report/
