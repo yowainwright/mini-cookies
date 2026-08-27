@@ -19,6 +19,7 @@ export interface CookieAttributes {
 
 export interface Options {
   debug?: boolean;
+  hasState?: boolean;
   id?: string;
 }
 

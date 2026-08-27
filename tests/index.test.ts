@@ -76,6 +76,15 @@ describe("attributes", () => {
 });
 
 describe("MiniCookies state", () => {
+  it("keeps root hasState compatibility", () => {
+    const cookies = miniCookies({ hasState: true, id: "root-state-compat" });
+    cookies.set("root", "state");
+    assert.deepStrictEqual(cookies.review(), {
+      root: { name: "root", value: "state" },
+    });
+    cookies.clearState();
+  });
+
   it("updates state", () => {
     const cookies = miniCookiesWithState();
     cookies.set("biz", "buzz");

@@ -73,7 +73,7 @@
     "prepublishOnly": "pnpm run validate",
     "release": "release-it",
     "setup": "bash scripts/setup.sh --agents",
-    "test": "node --test tests/mini-cookies.test.ts",
+    "test": "node --test tests/index.test.ts",
     "test:e2e:prepare": "cp dist/mini-cookies.bundle.js public/ && cp dist/mini-cookies.bundle.js.map public/ && cp dist/state.bundle.js public/ && cp dist/state.bundle.js.map public/",
     "test:e2e": "pnpm test:e2e:prepare && playwright test --config tests/playwright.config.ts",
     "test:e2e:ui": "pnpm test:e2e:prepare && playwright test --config tests/playwright.config.ts --ui",
