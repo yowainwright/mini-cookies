@@ -69,9 +69,10 @@
     "lint:fix": "bash scripts/agent/lint.sh --fix --all",
     "lint:legibility": "pnpm run lint:agent",
     "lint:strict": "pnpm run lint:all",
-    "prepare": "husky install",
+    "prepare": "bash scripts/setup.sh --pre-commit",
     "prepublishOnly": "pnpm run validate",
     "release": "release-it",
+    "setup": "bash scripts/setup.sh --agents",
     "test": "node --test tests/mini-cookies.test.ts",
     "test:e2e:prepare": "cp dist/mini-cookies.bundle.js public/ && cp dist/mini-cookies.bundle.js.map public/ && cp dist/state.bundle.js public/ && cp dist/state.bundle.js.map public/",
     "test:e2e": "pnpm test:e2e:prepare && playwright test --config tests/playwright.config.ts",
@@ -100,11 +101,6 @@
     "serve": "^14.2.6",
     "tslib": "2.8.1",
     "typescript": "7.0.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && pnpm test && pnpm typecheck"
-    }
   },
   "lint-staged": {
     "src/**/*.ts": [
