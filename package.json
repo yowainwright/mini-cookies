@@ -155,7 +155,9 @@
       },
       "husky",
       "jsdom",
-      "lint-staged",
+      {
+        "lint-staged": "17.3.0"
+      },
       {
         "oxfmt": "^0.64.0"
       },
