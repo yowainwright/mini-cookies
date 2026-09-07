@@ -86,7 +86,7 @@
   "devDependencies": {
     "@commitlint/cli": "21.2.2",
     "@commitlint/config-conventional": "21.2.2",
-    "@playwright/test": "^1.62.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "26.2.0",
     "codependence": "^1.0.8",
     "eslint-plugin-legibility": "^0.3.3",
@@ -277,5 +277,8 @@
     "npm": {
       "publish": false
     }
-  }
+  },
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {}
 }
